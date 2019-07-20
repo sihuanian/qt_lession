@@ -1,0 +1,110 @@
+hdbg_color = #e54847
+font_color_block = #fff
+
+html,
+body 
+    width 100%
+
+.nav
+    height 1.067rem
+    font-size 18px
+    text-align center
+    background-color hdbg_color
+    padding 6px
+    box-sizing border-box
+    .arrow-left
+        float left
+        height 100%
+        position relative
+        &:after
+            content ''
+            width 12px
+            height 12px
+            position absolute
+            top 50%
+            left 16px
+            border 2px solid #fff
+            border-width 0 0 2px 2px
+            transform rotate(45deg) translateY(-50%)
+    span
+        color font_color_block
+        display inline-block
+
+.page
+    background #f4f4f4
+    position relative
+    z-index 1
+    margin 0
+    color #555
+    min-width 3.1rem
+    -webkit-tap-highlight-color rgba(255, 255, 255, 0)
+    font 14px/1.5 Arial,Helvetica,sans-serif
+    section
+        background-color #fff
+        border-bottom 1px solid #e5e5e5
+    .movie-header
+        padding 0
+        background #f8f8f8
+        border-bottom none
+        .movie
+            color #fff
+            padding 0.4rem
+            line-height 1
+            position relative
+            box-sizing border-box
+            filter blur(0)
+            &-background,
+            &-filter
+                position absolute
+                top 0
+                bottom 0
+                right 0
+                left 0
+            &-background
+                z-index 0
+                -webkit-filter blur(0.6rem)
+                filter blur(0.6rem)
+                background-image url(./images/header-bg.jpg)
+                background-size cover
+                background-repeat no-repeat
+                background-position-y 40%
+            &-filter
+                background-color #40454d
+                opacity 0.5
+            &-container
+                z-index 1
+                position relative
+                overflow scroll
+                .movie-cover
+                    float left
+                    width 2.854rem
+                    height 4rem
+                    border 1px solid #f0f2f3
+                    position relative
+                    .img
+                        width 100%
+                    &:after
+                        content ''
+                        position absolute
+                        width 1rem
+                        height 1rem
+                        top 50%
+                        left 50%
+                        transform translate(-50%, -50%)
+                        background url(./images/bofang.png) no-repeat
+                        background-size 100% auto
+                        opacity 0.7
+                .movie-content
+                    overflow hidden
+                    padding-left 0.4rem
+                    .movie-name
+                        font-size 17px
+                        margin 0.08rem 0
+                    .movie-ename
+                        font-size 12px
+                        margin-bottom 0.3rem
+
+
+
+
+

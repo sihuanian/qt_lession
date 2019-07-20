@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>红绿灯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1acbfc;
+        }
+
+        .traffic-light {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10em;
+            height: 22.5em;
+            border: 0.5em solid #eee;
+            border-radius: 2em;
+            z-index: 10;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+        }
+    
+        .traffic-light::before {
+            content: '';
+            display: block;
+            width: 3em;
+            height: 8em;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%);
+            background: #eee;
+            background: linear-gradient(rgba(240, 240, 240, .9), #1acbfc);
+            z-index: 0;
+        }
+
+        .light {
+            width: 6em;
+            height: 5.5em;
+            border-radius: 50%;
+            background: #000;
+            border: 1px solid #000;
+            margin: 1em auto;
+        }
+
+        .red {
+            animation: red 10s linear infinite;
+        }
+
+        .amber {
+            animation: amber 10s linear infinite;
+        }
+
+        .green {
+            animation: green 10s linear infinite;
+        }
+
+        @keyframes red {
+            0% {
+                background-color: red;
+            }
+            20% {
+                background-color: red;
+            }
+            33.33333% {
+                background-color: #000;
+            }
+            33.33334% {
+                background-color: #000;
+            }
+            90% {
+                background-color: #000;
+            }
+            100% {
+                background-color: red;
+            }
+        }
+        @keyframes amber {
+            0% {
+                background-color: #000;
+            }
+            20% {
+                background-color: #000;
+            }
+            33.33333% {
+                background-color: orange;
+            }
+            60% {
+                background-color: orange;
+            }
+            66.66666% {
+                background-color: #000;
+            }
+            66.66667% {
+                background-color: #000;
+            }
+            100% {
+                background-color: #000;
+            }
+        }
+        @keyframes green {
+            0% {
+                background-color: #000;
+            }
+            60% {
+                background-color: #000;
+            }
+            66.66666% {
+                background-color: green;
+            }
+            66.66667%{
+                background-color: green;
+            }
+            90% {
+                background-color: green;
+            }
+            100% {
+                background-color: #000;
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="traffic-light">
+        <div class="light red"></div>
+        <div class="light amber"></div>
+        <div class="light green"></div>
+    </div>
+</body>
+
+</html>

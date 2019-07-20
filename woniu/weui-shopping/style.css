@@ -1,0 +1,38 @@
+.container,.page {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.tab {
+    display: none;
+}
+
+.tab.show {
+    display: block;
+}
+.tab .img {
+    position: absolute;
+    top: 27%;
+    animation: rotate 10s linear infinite;
+}
+@keyframes rotate {
+    from {
+        transform: rotateZ(0deg)
+    }
+    to {
+        transform: rotateZ(360deg)
+    }
+}
+.mine-title {
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    font-weight: 540;
+}
+.avatar {
+    border-radius: 50%;
+}
