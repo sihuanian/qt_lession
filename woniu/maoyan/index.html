@@ -20,6 +20,14 @@
     </header>
 
     <div class="page">
+        <!-- Toast -->
+        <div id="toast">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+                <p class="weui-toast__content"></p>
+            </div>
+        </div>
         <!-- section1 -->
         <section class="movie-header">
             <div class="movie">
@@ -48,6 +56,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="movie-detail">
+                            <div class="movie-type"></div>
+                            <div class="address-time">
+                                <span class="address"></span>
+                                /
+                                <span class="time"></span>
+                                分钟
+                            </div>
+                            <p class="date"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="operating flex">
+                    <div class="movie-watch flex1" id="movie-watch">
+                        <img src="./images/heart.png" alt="">
+                        <span>想看</span>
+                    </div>
+                    <div class="movie-mark flex1" id="movie-mark">
+                        <img src="./images/star2.png" alt="">
+                        <span>评分</span>
                     </div>
                 </div>
             </div>
@@ -59,14 +87,58 @@
                 url: 'https://www.easy-mock.com/mock/5d2ed7f18a035669a02b4d3c/movie/maoyandianying',
                 type: 'get',
                 success: function(res) {
-                    // console.log(res)
+                    console.log(res.data)
                     $('#moviePic').attr('src', res.data.moviePic)
                     $('.movie-name span').text(res.data.name)
                     $('.movie-ename span').text(res.data.nameEnglish)
                     $('.score-num span').html(res.data.people)
+                    $('.rating-score').html(res.data.grade)
+                    star(res.data.star)
+                    $('.movie-type').html(res.data.type)
+                    $('.address').html(res.data.where)
+                    $('.time').html(res.data.time)
+                    $('.date').html(res.data.date)
                 }
             })
+
+            function star(e) {
+                let num = Math.floor(e)
+                let white = Math.floor(5 - e)
+                let half_star = `<img src="./images/star-h.png" class="img">`
+                let star = `<img src="./images/star.png" class="img">`
+                let empty_star = `<img src="./images/star2.png" class="img">`
+                
+                for (let i = 0; i < white; i++) {
+                    $('#rating').prepend(empty_star)
+                }
+
+                if (e > num) {
+                    $('#rating').prepend(half_star)
+                }
+
+                for (let i = 0; i < num; i++) {
+                    $('#rating').prepend(star)
+                }
+            }
+
+            
         })()
+
+        $('#movie-watch').on("click", function(){
+            if ($(this).hasClass('show')) {
+                $(this).removeClass('show')
+                $('#movie-watch img').attr('src', './images/heart.png')
+                $('.weui-toast__content').html('以取消想看')  
+            } else {
+                $('.weui-toast__content').html('已标记为想看')
+                $('#movie-watch').addClass('show')
+                $('#movie-watch img').attr('src', './images/heart1.png')  
+            }
+            $('#toast').addClass('active')
+            setTimeout(() => {
+                $("#toast").removeClass('active')
+            }, 2000);       
+        })
     </script>
 </body>
 

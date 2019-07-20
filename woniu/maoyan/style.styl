@@ -5,6 +5,12 @@ html,
 body 
     width 100%
 
+.flex
+    display flex
+
+.flex1
+    flex 1
+
 .nav
     height 1.067rem
     font-size 18px
@@ -103,7 +109,52 @@ body
                     .movie-ename
                         font-size 12px
                         margin-bottom 0.3rem
+                    .movie-score
+                        font-size 12px
+                        margin-bottom 0.3em
+                        .rating
+                            padding-bottom 0.2rem
+                            .img
+                                width 0.48rem
+                                margin-right 2px
+                            span
+                                font-size 0.6rem
+                                color #ffc600
+                    .movie-detail
+                        font-size 12px
+                        margin-bottom 0.16rem
+                        opacity 0.7
+                        div,p
+                            margin-bottom 0.14rem
+            .operating
+                margin-top 0.5em
+                div
+                    border 1px solid rgba(255, 255, 255, .4)
+                    background-color rgba(255, 255, 255, .4)
+                    font-size 14px
+                    color #ffffff
+                    position relative
+                    z-index 2
+                    text-align center
+                    padding 0.25rem 0
+                    border-radius 4px
+                    img 
+                        vertical-align middle
+                    span
+                        vertical-align middle
+                .movie-watch
+                    margin-right .3rem
+                    img
+                        width 14px
+                .movie-mark
+                    img
+                        width 18px
 
+#toast
+    display none
+
+.active
+    display block !important
 
 
 
