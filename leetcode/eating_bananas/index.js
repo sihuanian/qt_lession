@@ -2,14 +2,16 @@ var minEatingSpeed = function(piles, H = 8) {
     let lo = 1, // min
         hi = Math.max(...piles) // max
         
-    while(lo <= hi) {
-        // 提前退出
-        if (canEatAllBananas(piles, H, lo)) {
-            return lo
-        }
-        lo++
-    }
+    while(lo < hi) {
+        let middle = Math.floor((hi + lo) / 2)
 
+        // 提前退出
+        if (!canEatAllBananas(piles, H, middle)) {
+            lo = middle + 1
+        } else {
+            hi = middle
+        }
+    }
     return lo
 }
 
@@ -21,4 +23,4 @@ function canEatAllBananas(piles, H, lo) {
     return h <= H
 }
 
-console.log(minEatingSpeed([3, 6, 7, 11]))
+console.log(minEatingSpeed([3,6,7,11]))
