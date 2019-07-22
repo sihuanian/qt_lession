@@ -80,6 +80,68 @@
                 </div>
             </div>
         </section>
+        <!-- section2 -->
+        <section class="section-seperate sectionn-expander">
+            <div class="text-expander">
+                <div class="text-expander__content close">
+                    <p></p>
+                </div>
+                <div class="text-expander__button" id="text-expander">
+                    <i class="icon-chevron__down"></i>
+                </div>
+            </div>
+        </section>
+        <!-- section3 -->
+        <section class="section-seperate">
+            <p class="action-list section-title">演职人员</p>
+            <ul class="movie-celebrities">
+                <!-- <li>
+                    <a href="#" class="link">
+                        <div class="movie-celebrities__pic">
+                            <img src="http://p0.meituan.net/movie/9530c82138049c7828d21d57e98100791225739.jpg@180w_140h_1e_1c.webp" alt="">
+                        </div>
+                        <span class="movie-celebrities-nick">米津玄师</span>
+                        <span class="movie-celebrities-roles">音乐人</span>
+                    </a>
+                </li> -->
+            </ul>
+        </section>
+        <!-- section4 -->
+        <section class="section-seperate sectionn-expander movie-booking">
+            <p class="section-title">票房</p>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="placeholder">
+                        <span id="ranking"></span>
+                        <p>昨日票房排行</p>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder">
+                        <span id="bookingWeek"></span>
+                        <p>首周票房（万）</p>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder">
+                        <span id="bookingTotal"></span>
+                        <p>累计票房（万）</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section5 -->
+        <section class="section-seperate">
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access" href="javascript:;">
+                        <div class="weui-cell__bd">
+                            <p>视频和剧照</p>
+                        </div>
+                        <div class="weui-cell__ft">384</div>
+                    </a>
+                </div>
+                <ul class="movie-video"></ul>
+        </section>
     </div>
     <script>
         (function() {
@@ -98,6 +160,12 @@
                     $('.address').html(res.data.where)
                     $('.time').html(res.data.time)
                     $('.date').html(res.data.date)
+                    $('.text-expander__content p').html(res.data.desc)
+                    celebrity(res.data.person)
+                    $('#ranking').html(res.data.booking.ranking)
+                    $('#bookingWeek').html(res.data.booking.bookingWeek)
+                    $('#bookingTotal').html(res.data.booking.bookingTotal)
+                    videoAndPicture(res.data.pictures)
                 }
             })
 
@@ -139,6 +207,43 @@
                 $("#toast").removeClass('active')
             }, 2000);       
         })
+
+        $('#text-expander').click(function() {
+            $('.icon-chevron__down').toggleClass('up')
+            $('.text-expander__content').toggleClass('close')
+        })
+
+        // 演员表
+        function celebrity(e) {
+            for (let n of e) {
+                $('.movie-celebrities').append(
+                `<li>
+                    <a href="#" class="link">
+                        <div class="movie-celebrities__pic">
+                            <img src=${n.avatal} alt="">
+                        </div>
+                        <span class="movie-celebrities-nick">${n.name}</span>
+                        <span class="movie-celebrities-roles">${n.sort}</span>
+                    </a>
+                </li>`
+                )
+            }
+        }
+
+        // 演员表
+        function videoAndPicture(e) {
+            for (let n of e) {
+                $('.movie-video').append(
+                `<li>
+                    <a href="#" class="link">
+                        <div class="movie-video__pic">
+                            <img src=${n} alt="">
+                        </div>
+                    </a>
+                </li>`
+                )
+            }
+        }
     </script>
 </body>
 
