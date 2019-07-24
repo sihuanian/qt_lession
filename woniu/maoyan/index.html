@@ -142,6 +142,92 @@
                 </div>
                 <ul class="movie-video"></ul>
         </section>
+        <!-- section6 -->
+        <section class="section-seperate sectionn-expander">
+            <p class="section-title pos_r">讨论
+                <span class="join-comment">参与讨论</span>
+            </p>
+            <ul class="movie-comment">
+                <li class="comment-item">
+                    <div class="comment-item__sort">
+                        <span>全部</span>
+                        <span class="comment-item__nim"></span>
+                    </div>
+                </li>
+                <li class="comment-item">
+                    <div class="comment-item__sort">
+                        <span>好评</span>
+                        <span class="comment-item__nim" id="good">34333</span>
+                    </div>
+                </li>
+                <li class="comment-item">
+                    <div class="comment-item__sort">
+                        <span>差评</span>
+                        <span class="comment-item__nim" id="bad">467</span>
+                    </div>
+                </li>
+                <li class="comment-item">
+                    <div class="comment-item__sort">
+                        <span>点映</span>
+                        <span class="comment-item__nim" id="dy">14176</span>
+                    </div>
+                </li>
+                <li class="comment-item">
+                    <div class="comment-item__sort">
+                        <span>购票</span>
+                        <span class="comment-item__nim" id="bought">35999</span>
+                    </div>
+                </li>
+                <li class="comment-item">
+                    <div class="comment-item__sort">
+                        <span>认证作者</span>
+                        <span class="comment-item__nim" id="author">35</span>
+                    </div>
+                </li>
+                <li class="comment-item">
+                    <div class="comment-item__sort">
+                        <span>同城</span>
+                        <span class="comment-item__nim" id="sameCity">990</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!-- section7 -->
+        <section class="section-seperate section-expander">
+            <p class="section-title select">精选</p>
+            <ul class="chosen-comment" id="chosen-comment">
+              <li class="chosen-comment__item">
+                <div class="item-wrapper">
+                    <div class="item-avatal">
+                        <img src="http://img5.duitang.com/uploads/item/201409/23/20140923094045_BNYji.thumb.700_0.png" alt="">
+                    </div>
+                    <div class="item-detail">
+                        <div class="item-detail__hd">
+                            <div>
+                                <span class="nick-name">额问我</span>
+                                <span class="level">
+                                    <img src="http://p0.meituan.net/moviemachine/83a90e3a7dda4463963fbc7fb8c02ee32335.png" alt="">
+                                </span>
+                            </div>
+                            <p class="item-score__desc">给这部电影打了<span>10</span>分</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-comment">
+                    <p class="comment-detail">可以说本片是今年至今为止，我看过的最好看的影片，没有之一！片子特别温情，除了开始有几个点比较搞笑外，我几乎事含着泪看完全场的—为师生间深刻的情感、为同学间真挚的友谊、为青春时美好的爱恋……总之，如果用一个词概括—\"纯粹\"，对，特别纯粹！我觉得凡70后、上过高中的人都应该走进影院，我想你会找到自己的影子(比如你曾就读是青岛三十九中😏 )。为于谦老师的演绎打CALL，老年的他一出现，我就泪崩了！特别想念我人生中对我影响至深的几位老师，深深地为你们祝福！</p>
+                    <div class="comment-info">
+                        <div class="puilsh-date">
+                            <span>5天前</span>
+                        </div>
+                        <div class="comment-reply">
+                            <div class="like">6944</div>
+                            <div class="say">224</div>
+                        </div>
+                    </div>
+                </div>
+              </li>
+            </ul>
+        </section>      
     </div>
     <script>
         (function() {
@@ -230,7 +316,7 @@
             }
         }
 
-        // 演员表
+        // 视频和剧照
         function videoAndPicture(e) {
             for (let n of e) {
                 $('.movie-video').append(
