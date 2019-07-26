@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>街头霸王</title>
+</head>
+
+<body>
+    <button id="replay">播放录像</button>
+
+
+    <script>
+        let currentPlayer = null
+
+        const Ryu = {
+                name: 'Ryu',
+                gender: '男',
+                attack() {
+                    console.log('attack...')
+                },
+                defense() {
+                    console.log('defense...')
+                },
+                jump() {
+                    console.log('jump...')
+                },
+                crouch() {
+                    console.log('squt...')
+                }
+            },
+
+            ChunLi = {
+                name: '春丽',
+                gender: '女',
+                attack() {
+                    console.log(this.name + 'attack...')
+                },
+                defense() {
+                    console.log(`${this.name} defense...`)
+                },
+                jump() {
+                    console.log(`${this.name} jump...`)
+                },
+                crouch() {
+                    console.log(`${this.name} crouch...`)
+                }
+            },
+
+            commands = {
+                "119": "jump", // w
+                "115": "crouch", // s
+                "97": "defense", // a
+                "100": "attack" // d
+            }
+
+        currentPlayer = ChunLi
+        const commandStack = []
+        
+        document.onkeypress = function (e) {
+            // console.log(e)
+            // 1. 抽象 {e.keyCode 对应于一个动作} obj[key] obj.name
+            //    Ryu[commands[e.keyCode]]() 具象
+            let keyCode = e.keyCode,
+                command = makeCommand(currentPlayer, commands[keyCode])
+            if (commands[keyCode]) {
+                // 哪个人物做那个动作 参数 
+                // makeCommand(Ryu, command)
+                // Ryu[commands[e.keyCode]]()
+                command()
+                commandStack.push(command)
+            }
+            // switch(e.keyCode) {
+            //     case 119: 
+            //         Ryu.jump()
+            //         break
+
+            //     case 115:
+            //         Ryu.crouch()
+            //         break
+
+            //     case 97:
+            //         Ryu.defense()
+            //         break
+
+            //     case 100:
+            //         Ryu.attack()
+            //         break
+            // }
+            // key  对应的 动作 动起来
+
+        }
+
+        // 封装
+        function makeCommand(reciver, state) {
+            return function () {
+                // console.log(reciver[state]())
+                reciver[state]()
+            }
+        }
+
+        document.querySelector('#replay').onclick = function() {
+            let command
+            while(command = commandStack.shift()) {
+                command()
+            }
+        }
+    </script>
+</body>
+
+</html>

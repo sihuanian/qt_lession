@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>街头霸王</title>
+</head>
+
+<body>
+    <button id="replay">播放录像</button>
+
+
+    <script>
+        let currentPlayer = null
+
+        class Person {
+            constructor(name, gender) {
+                this.name = name
+                this.gender = gender
+                this.commands = {
+                    "119": "jump",
+                    "115": "crouch",
+                    "97": "defense",
+                    "100": "attack"
+                }
+                this.commandStack = []
+            }
+
+            attack() {
+                console.log(this.name + 'attack...')
+            }
+            defense() {
+                console.log(`${this.name} defense...`)
+            }
+            jump() {
+                console.log(`${this.name} jump...`)
+            }
+            crouch() {
+                console.log(`${this.name} crouch...`)
+            }
+            makeCommand(state) {
+                return () => {
+                    this[state]()
+                }
+            }
+            replay() {
+                let command
+                while (command = this.commandStack.shift()) {
+                    command()
+                }
+            }
+
+        }
+
+        const Ryu = new Person('Ryu', '男')
+        ChunLi = new Person('春丽', '女')
+
+        currentPlayer = ChunLi
+        const commandStack = []
+
+        document.onkeypress = function (e) {
+            let keyCode = e.keyCode,
+                command = this.makeCommand(this.commands[keyCode])
+            if (this.commands[keyCode]) {
+                command()
+                this.commandStack.push(command)
+            }
+        }.bind(ChunLi)
+
+        document.querySelector('#replay').onclick = function () {
+            this.replay()
+        }.bind(ChunLi)
+    </script>
+</body>
+
+</html>
