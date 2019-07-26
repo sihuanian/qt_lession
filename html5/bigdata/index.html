@@ -1,37 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
+	<style>
+		html,body {
+			height: 100%;
+		}
+		.news > div {
+			text-align: center;
+			height: 50px;
+		}
+	</style>
 </head>
 
 <body>
 	<div class="news-header"></div>
-	<div class="news">
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-		<div class="news-item"></div>
-	</div>
+	<div class="news"></div>
 	<div class="news-footer"></div>
+	<script>
+		// 大数据 如何用 js 分页
+		const originNews = Array.from({
+				length: 10000
+			},
+			(v, k) => ({
+				content: `新闻${k}`
+			})
+		)
+		// 分割
+		console.log(originNews)
+		// page limit 函数
+		// 箭头函数
+		const chunk = (arr, size) =>
+			Array.from({
+					length: Math.ceil(arr.length / size)
+				}, (v, i) =>
+				// 切割数组
+				arr.slice(size * i, i * size + size)
+			)
+
+		// console.log(chunk(originNews, 20))
+		const element = document.querySelector('.news')
+
+		let page = 0, 
+			pageNum = Math.ceil(document.body.clientHeight / 50),
+			news = chunk(originNews, pageNum)
+	
+
+		const loadObserver = new IntersectionObserver((entries) => {
+			console.log(entries)
+
+			if (entries[0].intersectionRatio <= 0) {
+				return
+			}
+			const hasPrePage = page != 0
+				hasNextPage = page !=  news.length - 1
+				now = news[page]
+				pre = hasPrePage ? news[page - 1] : []
+				next = hasNextPage ? news[page + 1] : []
+
+				// 渲染
+				render(pre.length, [...pre, ...now, ...next])
+
+				page = entries[0].target.className == 'news-footer' || page === 0
+				? (hasNextPage ? page + 1 : page) : (hasPrePage ? page - 1 : page)
+		}, { threshold: [1] })
+		loadObserver.observe(document.querySelector('.news-header'))
+		loadObserver.observe(document.querySelector('.news-footer'))
+
+		function render(last, data) {
+			element.innerHTML = ''
+			data.forEach((i, v) => element.innerHTML += v == last 
+				? `<div id="news-href">${i.content}</div>` : `<div>${i.content}</div>`)
+
+			window.location.href = '#news-href'
+		}
+	</script>
 </body>
 
 </html>

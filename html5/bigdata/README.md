@@ -8,3 +8,17 @@
     
     分页  ?limit=20&page=1
     html5  来实现
+
+    git 
+
+    git log  q退出 n下一页 j k
+    git log --oneline
+
+    304  上次访问过，文件没有被修改，直接用上次浏览器的缓存文件
+
+    http 超文本传输协议
+    文件太大，分多冷，等待时间长，对大数据做分页
+    http 状态码 304 文件没有修改，使用浏览器缓存
+
+    - 利益于 ES6 Array.from({length: n}, (v, k) => `新闻${k}`)  前端模拟大数据
+    - 将大数据按分割  分割好，Array.from({length: Math.ceil(arr.length / size)}, (v, k) => Array.from({length: size}, (v, k) => ))
