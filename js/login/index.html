@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            text-align: center;
+            padding: 25px 0;
+        }
+
+        .inner {
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        sdgsgssdg
+        <p class="inner">slfdjssldkfj</p>
+    </div>
+    <!-- 登录 评论  loginForm -->
+    <!-- 阻止默认行为 javascript:void(0); -->
+    <a href="/login" id="login_a">login</a>
+    <!-- <button id="loginBtn">登录</button> -->
+
+    <script>
+        document.getElementById('login_a').addEventListener('click', function (e) {
+            e.preventDefault() // perventDefault()
+            alert('打开弹窗')
+        })
+
+        const box = document.querySelector('.box').addEventListener('click', (e) => {
+            alert("I'm a box")
+            }, false)
+        const inner = document.querySelector('.inner').addEventListener('click', (e) => {
+            // e.stopPropagation() // 阻止冒泡行为
+            alert("I'm inner")
+        }, false)
+    </script>
+</body>
+
+</html>
