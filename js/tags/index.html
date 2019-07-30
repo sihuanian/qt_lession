@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="info-list">
+        <li>
+            <a class="info" herf="javascript:;" data-id="1">获取信息</a>
+        </li>
+        <li>
+            <a class="info" herf="javascript:;" data-id="2">获取信息</a>
+        </li>
+        <li>
+            <a class="info" herf="javascript:;" data-id="3">获取信息</a>
+        </li>
+    </ul>
+    <div class="userinfo"></div>
+
+    <a href="javascript:;" id="info_a">Get Student Info</a>
+
+    <script>
+        // 第三个参数是冒泡方向，默认是false ,从内向外
+        const getStudentInfo = e => {
+            // console.log(e.target.tagName)          
+            console.log(this === event.target)
+            console.log(this)
+        }
+        const infoA = document.querySelector('#info_a')
+        infoA.addEventListener('click', getStudentInfo, false)
+
+        const infos = document.querySelectorAll('.info')
+        // for (let i = 0; i < infos.length; i++) {
+        //    infos[i].addEventListener('click', e => console.log(e.target.dataset.id))
+        // infos[i].addEventListener('click', (e) => {const id = e.target.dataset.id})
+        // }
+
+        const renderStudent = (student) => {
+            document.querySelector('.userinfo').innerHTML = `
+                <p>学号： ${student.id} - 姓名： ${student.username}</p>
+            `
+        }
+
+        const fetchStudentInfoById = id => {
+            // console.log(id)
+            fetch('/data.json')
+                // 可读流，可写流
+                .then(res => res.json())
+                .then(res => {
+                    // console.log(res.students[id - 1])
+                    let info = (res.students.filter(student => student.id == id))[0]
+                    // console.log(info)
+                    renderStudent(info)
+                    /* res.students.forEach(item => {
+                        if (item.id == id) {
+                            info = item
+                        }
+                    })
+                    console.log(info) */
+
+                })
+        }
+
+        /* for (const i of infos) {
+            i.addEventListener('click', (e) => {
+                const id = e.target.dataset.id
+                const studentInfo = fetchStudentInfoById(id)
+            }, false)
+        } */
+
+        /* infos.forEach((info, index) => {
+            console.log(info, index)
+        }) */
+
+        document.querySelector('.info-list').addEventListener('click', function (e) {
+            // console.log(e.target, this)
+            const id = e.target.dataset.id
+            if(id) {
+                const studentInfo = fetchStudentInfoById(id)
+            }
+        })
+    </script>
+</body>
+
+</html>
