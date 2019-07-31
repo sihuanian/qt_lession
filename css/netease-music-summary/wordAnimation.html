@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  * {
+      margin: 0;
+      padding: 0;
+  }
+  .para {
+      line-height: 1.7;
+      padding-left: 20px;
+      animation: wordUp 1s ease-in;
+  }
+  @keyframes wordUp {
+      from {
+          opacity: 0;
+          transform: translateY(7px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0)
+      }
+  }
+
+  </style>
+</head>
+<body>
+  <!-- 1： 从下往上 
+        2： 淡入
+  -->
+    <div class="paras">
+      <p class="para">这一年</p>
+      <p class="para">TA有46小时与音乐相伴</p>
+      <p class="para">在音乐的世界</p>
+      <p class="para">遇见你真好</p>
+    </div>
+</body>
+</html>

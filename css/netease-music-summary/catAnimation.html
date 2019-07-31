@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>猫</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cat {
+            text-align: center;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .tail {
+            width: 64px;
+            height: 194px;
+            position: absolute;
+            background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maowei.cebc9c6d99173d07009465c700b0eb21.png) no-repeat;
+            left: 110px;
+            top: 50px;
+            animation: rotate 4s linear infinite;
+            transform-origin: bottom;
+        }
+        .eye1,.eye2 {
+            width: 3px;
+            height: 3px;
+            position: absolute;
+            z-index: 2;
+            animation: eye 2s ease-in infinite;
+        }
+        .eye1 {
+            top:410px;
+            left: 205px;
+            background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maoyan1.df1051d529797e9a904ee2a02ff2d57c.png) no-repeat;
+        }
+        .eye2 {
+            top:415px;
+            left: 220px;
+            background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maoyan1.df1051d529797e9a904ee2a02ff2d57c.png) no-repeat;
+        }
+
+        .body {
+            width: 117px;
+            height: 201px;
+            position: absolute;
+            background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maoshenti.ad6177be5deba54a83a99ef58fe80047.png) no-repeat;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .claw {
+            width: 34px;
+            height: 81px;
+            position: absolute;
+            background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maozhua.35cbb00fc5856cf230d6a4e60cfdfc55.png) no-repeat;
+            left: 190px;
+            top: 425px;
+            animation: rotate 4s linear infinite;
+            transform-origin: top;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(-5deg);
+            }
+        }
+        @keyframes eye {
+            0% {
+                opacity: 1;
+            }
+            40% {
+                opacity: 1;
+            }
+            45% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            55% {
+                opacity: 0;
+            }
+            60% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+  身体：http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maoshenti.ad6177be5deba54a83a99ef58fe80047.png
+  猫爪：http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maozhua.35cbb00fc5856cf230d6a4e60cfdfc55.png
+  猫尾：http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maowei.cebc9c6d99173d07009465c700b0eb21.png
+  1. 身体居中
+  2. 猫爪 猫尾摆动
+  -->
+    <div class="cat">
+        <div class="tail"></div>
+        <div class="body"></div>
+        <div class="eye1"></div>
+        <div class="eye2"></div>
+        <div class="claw"></div>
+    </div>
+
+
+</body>
+
+</html>
