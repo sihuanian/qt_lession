@@ -24,7 +24,7 @@ html,body {
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/sun.a3f575ae2fef2cfdae15011e6081a094.png);
+    background-image: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/sun.a3f575ae2fef2cfdae15011e6081a094.png);
     background-size: 100%;
 }
 .art {
@@ -43,7 +43,7 @@ html,body {
     top: -180px;
     width: 478px;
     height: 1038px;
-    background-image: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/swing.88545d6c8e1ac798465e367f8e5357ab.png);
+    background-image: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/swing.88545d6c8e1ac798465e367f8e5357ab.png);
     transform-origin: -16% -29%;
     animation: ani_qiuqian 6s ease-in-out infinite;
 }
@@ -65,7 +65,7 @@ html,body {
     top: 958px;
     width: 130px;
     height: 32px;
-    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/leg2.d7bc44a91b6974450f2ccc430846c63d.png) no-repeat;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/leg2.d7bc44a91b6974450f2ccc430846c63d.png) no-repeat;
     animation: ani_leg2 8s ease infinite;
     transform-origin: 91% 33%;
 }
@@ -89,7 +89,7 @@ html,body {
 .leg2 .jiojio {
     display: block;
     position: absolute;
-    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/leg2-part.8f70bb7fc789a70bc78c48aa7718a765.png) no-repeat;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/leg2-part.8f70bb7fc789a70bc78c48aa7718a765.png) no-repeat;
     left: -27.75px;
     top: -10.5px;
     width: 57px;
@@ -103,7 +103,7 @@ html,body {
     top: 955.25px;
     width: 63px;
     height: 130px;
-    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/leg1.b1df6a7d1a794d36fbd0e1277733e1cf.png) no-repeat;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/leg1.b1df6a7d1a794d36fbd0e1277733e1cf.png) no-repeat;
     transform-origin: 17.8571428571429% 13.3653846153846%;
     animation: ani_leg1 8s ease infinite;
 }
@@ -131,7 +131,7 @@ html,body {
     top: 102.5px;
     width: 39px;
     height: 62px;
-    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/leg1-part.f2f17703a6af8fd2af5e0f5a9f320623.png) no-repeat;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/leg1-part.f2f17703a6af8fd2af5e0f5a9f320623.png) no-repeat;
     transform-origin: 69.2307692307692% 23.3870967741935%;
 }
 .swing .neck {
@@ -143,11 +143,11 @@ html,body {
     height: 42px;
 }
 .swing .neck {
-    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/neck.07a0013beff9796ed79c2cea542e5af2.png) no-repeat;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/neck.07a0013beff9796ed79c2cea542e5af2.png) no-repeat;
     transform-origin: 23.0392156862745% 86.3095238095238%;
 }
 .swing .head {
-    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/head.90bf892023d7df0522a4b53fc07e38df.png) no-repeat;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/head.90bf892023d7df0522a4b53fc07e38df.png) no-repeat;
     transform-origin: 32.843137254902% 65.4761904761905%;
     animation: ani2_head 8s ease infinite;
 }
@@ -182,7 +182,7 @@ html,body {
     }
 }
 .swing .head .part {
-    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/head-part.22d4381c4bd6cb1c3afd2b1bfcfe22f1.png) no-repeat;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/head-part.22d4381c4bd6cb1c3afd2b1bfcfe22f1.png) no-repeat;
     left: 20px;
     top: 2px;
     width: 40px;
@@ -221,7 +221,7 @@ html,body {
     height: 159px;
     transform: scale(.5);
     transform-origin: top right;
-    background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/juan3.1c58874dbcd7f233bf027e9332ea6d96.png) no-repeat;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/juan3.1c58874dbcd7f233bf027e9332ea6d96.png) no-repeat;
 }
 .swiper-slide-active .z-juanAni {
     animation: juanAnimation 1s steps(1) reverse,
@@ -321,4 +321,85 @@ html,body {
 	100.00% {
 		background-position: -1449px -954px
 	}
+}
+.mainwrap {
+    position: absolute;
+    width: 486px;
+    height: 494px;
+    right: 0;
+    bottom: 0;
+    transform: scale(.5);
+}
+.man {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/man.fafe9d20caf92e672faf6cac0506c94b.png) no-repeat;
+}
+.swiper-slide-active  .shoubi {
+    width: 246px;
+    height: 270px;
+    position: absolute;
+    left: 70px;
+    top: -115px;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/shoubi.dfdeb7747a98b98266ff5b0713024c87.png) no-repeat;
+    animation: shake 2s steps(12) infinite;
+}
+@keyframes shake {
+    0% {
+         background-position: 0 0;
+    }
+    100% {
+        background-position: -2952px 0;
+    }
+}
+.swiper-slide-active .tou {
+    width: 94px;
+    height: 101px;
+    position: absolute;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/tou.763e9f0545a28bfbc642f5d8db77c9d5.png) no-repeat;
+    top: -5px;
+    left: 220px;
+    animation: shakeHead 2s steps(12) infinite;
+}
+@keyframes shakeHead {
+    0% {
+         background-position: 0 0;
+    }
+    100% {
+        background-position: -1128px 0;
+    }
+}
+.words {
+    margin: 50px auto;
+    text-align: center;
+}
+.swiper-slide-active .word {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    filter: blur(3px);
+    animation: blurAppear 2s linear forwards;
+    background-size: 120px;
+    background-repeat: no-repeat;
+}
+@keyframes blurAppear {
+    from {
+        filter: blur(3px);
+        transform: scale(.8);
+        opacity: 0;
+    }
+    to {
+        filter: blur(0);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+span.word:nth-child(1) {
+    background-image: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/word-002.2703f54486bc20ddcbb5f0396508d237.png);
+}
+span.word:nth-child(2) {
+    background-image: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/word-003.3935224155d5feb528205549bc71d26d.png);
 }
