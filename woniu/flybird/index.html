@@ -34,9 +34,11 @@
         var landTimer = setInterval(landRun, 30)
 
         function landRun() {
+            // grassLand1向左移动完全移出wrapbg容器
             if (jsGrassLand1.offsetLeft <= -343) {
                 jsGrassLand1.style.left = '343px'
             }
+            // grassLand2向左移动完全移出wrapbg容器
             if (jsGrassLand2.offsetLeft <= -343) {
                 jsGrassLand2.style.left = '343px'
             }

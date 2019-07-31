@@ -20,7 +20,8 @@ const bird = {
 
         function fly() {
             this.div.style.top = this.div.offsetTop + this.fallSpeed++ + 'px' // 设置小鸟距离顶部的距离
-            if (this.div.offsetTop < 0) {
+            if (this.div.offsetTop <= 0) {
+                this.div.style.top = 0 // 不允许小鸟飞出顶部
                 this.fallSpeed = 2 // 用于小鸟不能飞出顶部
             }
             if (this.div.offsetTop > 395) {
