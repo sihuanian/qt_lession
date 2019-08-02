@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snake Game</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .welcome {
+        font-size: 60px;
+        height: 100vh;
+        line-height: 100vh;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <img width="350" onload="imgLoad()" src="https://img3.doubanio.com/view/photo/l/public/p2563855854.webp" alt="">
+    <div class="welcome">Welcome to Snake!</div>
+    <script>
+    function hideWelcome() {
+        console.log('隐藏welcome')
+        document.querySelector('.welcome').style.display = 'none'
+    }
+
+    function imgLoad() {
+        console.log('哪吒来了')
+    }
+
+    const loadAssets = (fn) => {
+        setTimeout(() => {
+            fn()
+            console.log('资源加载完毕！')
+        }, 5000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('页面渲染完成')
+        loadAssets(hideWelcome)
+    })
+
+    // 资源加载完成
+    window.onload = () => {
+        console.log('页面加载完成')
+        // 加载完资源后，hideWelcome
+        // loadAssets(hideWelcome)
+        // loadAssets(hideWelcome)
+        // hideWelcome()
+    }
+    </script>
+</body>
+</html>
