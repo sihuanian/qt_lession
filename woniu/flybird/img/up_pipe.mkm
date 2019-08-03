@@ -1,0 +1,7 @@
+<MKM version="2.0" imageFileUrl="file:///E:/github/qt_lession/woniu/flybird/img/up_pipe.png">
+  <Marks>
+    <LengthMark direction="3" color="16711680" length="60" x="45" y="0"/>
+    <LengthMark direction="12" color="16711680" length="62" x="0.5" y="40"/>
+    <TextMark defaultDirection="9" direction="9" color="16711680" x="23" y="15" textMaxWidth="100" offsetX="25" offsetY="10" text=""/>
+  </Marks>
+</MKM>

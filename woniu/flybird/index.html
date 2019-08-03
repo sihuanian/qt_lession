@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>FlyBird</title>
 </head>
+
 <body>
     <!-- 游戏背景 -->
     <div id="wrapbg">
@@ -23,13 +25,17 @@
     </div>
 
     <script src="./js/bird.js"></script>
+    <script src="./js/baseObj.js"></script>
+    <script src="./js/block.js"></script>
     <script>
         var jsWrapBg = document.getElementById('wrapbg'),
             jsHeadTitle = document.getElementById('headTitle'),
             jsGrassLand1 = document.getElementById('grassLand1'),
             jsGrassLand2 = document.getElementById('grassLand2'),
             jsHeadBird = document.getElementById('headBird'),
-            jsStartBtn = document.getElementById('startBtn')
+            jsStartBtn = document.getElementById('startBtn'),
+            blocksArr = [], // 用来存储block 的数据
+            blockDistance = baseObj.randomNum(120, 350)
         // 让草地动起来
         var landTimer = setInterval(landRun, 30)
 
@@ -44,6 +50,31 @@
             }
             jsGrassLand1.style.left = jsGrassLand1.offsetLeft - 3 + 'px'
             jsGrassLand2.style.left = jsGrassLand2.offsetLeft - 3 + 'px'
+
+            if (blocksArr.length) {
+                for (let i = 0; i < blocksArr.length; i++) {
+                    blocksArr[i].moveBlock()
+                    var x = baseObj.rectangleCrashExamine(blocksArr[i].downDivWrap, bird.div),
+                        y = baseObj.rectangleCrashExamine(blocksArr[i].upDivWrap, bird.div),
+                        z = bird.div.offsetTop >= 390
+                    
+                    if (x || y || z) {
+                        window.clearInterval(landTimer)
+                        bird.fallSpeed = 0
+                        jsWrapBg.onclick = null
+                    }
+                }
+
+                if (blocksArr[blocksArr.length - 1].downDivWrap.offsetLeft < (450 - blockDistance)) {
+                    blockDistance = baseObj.randomNum(130, 250)
+                    var newBlock = new Block()
+                    newBlock.createBlock()
+                    blocksArr.push(newBlock)
+                    /* if (blocksArr.length > 4) {
+                        jsWrapBg.removeChild()
+                    } */
+                }
+            }
         }
         // 标题摆动
         var Y = 3,
@@ -69,10 +100,15 @@
             bird.showBird(jsWrapBg) // 插入小鸟到页面中
             bird.flyBird() // 控制小鸟飞翔下落
             bird.wingWave() // 逐帧动画，小鸟煽动翅膀
-            jsWrapBg.onclick = function() {
+            jsWrapBg.onclick = function () {
                 bird.fallSpeed = -8
             }
+            // 开始出现管道
+            var b = new Block()
+            b.createBlock()
+            blocksArr.push(b)
         }
     </script>
 </body>
+
 </html>
