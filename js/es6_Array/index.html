@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /* const ages = [32, 15, 19, 12]
+        console.log('filter', ages.filter(i => i >= 18))
+        console.log('some', ages.some(i => i >= 18))
+        console.log('every', ages.every(i => i >= 18)) */
+
+        const array = [1, 2, 1, 1, '1']
+        // arr.filter 数组uniq 去重
+        function uniq(array) {
+            let res = [],
+                j = 0
+            for (let i = 0; i < array.length; i++) {
+                for ( j = 0; j < array.length; j++) {
+                    if (array[i] === res[j]) {
+                        break
+                    }
+                }
+                if (j === array.length) {
+                    res.push(array[i])
+                }
+            }
+            return res
+        }
+
+        /* function uniq(arr) {
+            var res = arr.filter((item, index) => {
+                return arr.indexOf(item) === index
+            })
+            return res
+        } */
+        console.log(uniq(array))
+    </script>
+</body>
+
+</html>
