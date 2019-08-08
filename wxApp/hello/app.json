@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/my/my",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#48a6fd",
+    "navigationBarTitleText": "旅梦开发团",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#515151",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home1.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "课程",
+        "iconPath": "images/menu.png",
+        "selectedIconPath": "images/menu1.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/wodedangxuan.png",
+        "selectedIconPath": "images/wodedangxuan1.png"
+      }
+    ]
+  }
+}
