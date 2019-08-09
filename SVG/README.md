@@ -1,3 +1,9 @@
+<!--
+ * @Author: sihuanian
+ * @since: 2019-08-08 10:12:20
+ * @lastTime: 2019-08-09 09:53:46
+ * @message: 
+ -->
 - 数据可视化
   SVG + Canvas
   1. circle svg 里的数学图形标签
@@ -6,5 +12,7 @@
 
 - storke 描边
   借鉴border dashed 的理解
-  storke-dashedarray: 实 虚 实 虚  周长; center right为起始点（顺时针）
+  storke-dashedarray: 实 虚 实 虚...  周长; center right为起始点（顺时针）
   storke-dashoffset: 10; 偏移量 （正减小）
+
+- text-anchor="middle" 水平居中 dominant-baseline="垂直居中"
