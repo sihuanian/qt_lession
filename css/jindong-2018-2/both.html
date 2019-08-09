@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>both</title>
+  <style>
+    .box {
+      width: 40px;
+      height: 40px;
+    }
+    .box1 {
+      background-color: #f00;
+      animation: long 2s 2s backwards;
+    }
+    .box2 {
+      background-color: #0f0;
+      animation: long 2s 2s forwards;
+    }
+    .box3 {
+      background-color: #00f;
+      animation: long 2s 2s both;
+    }
+    @keyframes long {
+      0% {
+        width: 100px;
+      }
+      100% {
+        width: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box box1"></div>
+  <div class="box box2"></div>
+  <div class="box box3"></div>
+</body>
+</html>
