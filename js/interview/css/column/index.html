@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .row {
+      width: 100%;
+      height: 100px;
+      /* display: flex;  */
+    }
+    /*.col1 {
+      width: 100px;
+      height: 100%;
+      float: left;
+      background-color: #ffff00;
+    }
+    .col2 {
+      background-color: pink;
+      height: 100%;
+      margin-left: 100px;
+      flex: 1;
+    } */
+    .slide {
+      float: right;
+      width: 100px;
+      height: 100%;
+      background-color: yellow;
+    }
+    .col1 {
+      margin-right: 100px;
+      height: 100%;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <!-- 将浮动列放前面 离开文档流 -->
+    <!-- <div class="col2"></div> -->
+    <div class="slide"></div>
+    <div class="col1"></div>
+  </div>
+</body>
+</html>
