@@ -37,7 +37,7 @@ Page({
     let selectAll = carts.every(i =>
       i.selected === true
     )
-      this.setData({
+    this.setData({
       selectAllStatus: selectAll
     })
     this.getTotalPrice()

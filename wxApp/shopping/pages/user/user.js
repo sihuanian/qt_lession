@@ -8,11 +8,40 @@ Page({
 
   },
 
+  payOrders() {
+    wx.requestPayment({
+      timeStamp: 'String1',
+      nonceStr: 'String2',
+      package: 'String3',
+      signType: 'MD5',
+      paySign: 'String4',
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '支付提示',
+          content: '<text>',
+          showCancel: false
+        })
+      }
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let self = this
+    wx.request({
+      url: 'http://www.gdfengshuo.com/api/wx/orders.txt',
+      success(res) {
+        self.setData({
+          orders: res.data
+        })
+      }
+    })
   },
 
   /**
@@ -26,7 +55,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.getStorage({
+      key: 'address',
+      success: (res) => {
+        // console.log(res)
+        this.setData({
+          hasAddress: true,
+          address: res.data
+        })
+      }
+    })
   },
 
   /**
