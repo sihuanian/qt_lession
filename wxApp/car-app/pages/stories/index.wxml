@@ -1,2 +1,8 @@
-<!--pages/stories/index.wxml-->
-<text>pages/stories/index.wxml</text>
+<view class="cards">
+  <view class="card" wx:for="{{ stories }}" wx:key="item.id">
+    <video src="{{ item.video }}" enable-danmu poster="{{ item.image }}" hidden="{{ currentVid !== item.id }}" id="{{ item.id }}" />
+    <image src="{{ item.image }}" hidden="{{ currentVid == item.id }}" bindtap="play" data-id="{{ item.id }}">
+      <view class="label">{{ item.duration }}</view>
+    </image>
+  </view>
+</view>
