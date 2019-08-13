@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // js 的bug ,同名的参数后者覆盖前者
+    function bar(a, a) {
+      console.log(a, a)
+      console.log('arguments', arguments)
+      let b = Array.from(arguments)
+      console.log(b.forEach)
+    }  
+
+    function Foo(a) {
+      this.a = a
+    }
+    Foo.prototype.sayA = function() {
+      console.log(this.a)
+    }
+    var fooObj = new Foo(1)
+    console.log(fooObj)
+    console.log(fooObj.sayA())
+
+    bar(1, 5)
+
+    // 箭头函数不允许同名形参
+    /* const bar_arrow = (a, a) => {
+      console.log(a, a)
+    }
+
+    bar_arrow(1, 5) // Duplicate parameter name not allowed in this context */
+  </script>
+</body>
+</html>
