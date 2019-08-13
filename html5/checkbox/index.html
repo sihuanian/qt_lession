@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CheckBox</title>
+  <link rel="stylesheet" href="./index.css">
+
+  <!-- html {
+  font-family: sans-serif;
+  background: #ffc600;
+  }
+  .inbox {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: white;
+  -webkit-border-radius: 5px; webkit 浏览器内核 iphone android
+  -moz-border-radius: 5px; 火狐内核
+  -ms-border-radius: 5px; 微软
+  border-radius: 5px;
+  }
+  .item {
+  display: flex;
+  align-items: center;
+  } -->
+
+</head>
+
+<body>
+  <div class="inbox">
+    <div class="item">
+      <input type="checkbox">
+      <p>check me item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>check me item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>check me item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>check me item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>check me item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>check me item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>check me item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>check me item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>check me item</p>
+    </div>
+  </div>
+
+  <script>
+    const checkboxs = document.querySelectorAll('.inbox input[type="checkbox"]')
+    // shift + click 选中所有
+    // const item = document.querySelector('.item')
+    // item.addEventListener('click', () => {console.log(this)})
+    checkboxs.forEach(checkbox => checkbox.addEventListener('click', handleClick))
+
+    function handleClick(e) {
+      let flag = false
+      if (e.shiftKey) {
+        checkboxs.forEach(checkbox => {
+          checkbox.checked = this.checked
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>
