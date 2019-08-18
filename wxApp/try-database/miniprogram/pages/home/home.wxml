@@ -1,0 +1,6 @@
+<vant-button square type="primary" block bindclick="navigateToAdd">
+  新增数据
+</vant-button>
+<vant-button square type="primary" block plain bindclick="navigateToIndex">
+  数据列表
+</vant-button>
