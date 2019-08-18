@@ -1,0 +1,16 @@
+{
+  "name": "spider-spa",
+  "version": "1.0.0",
+  "description": "smzdm: 请求返回整个页面的 html 浏览器渲染\r juejing: 返回一小部分 html 后续前端通过 ajax请求完构造出来的页面",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "puppeteer": "^1.19.0"
+  }
+}
