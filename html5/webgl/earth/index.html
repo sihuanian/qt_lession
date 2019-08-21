@@ -26,6 +26,9 @@
 
     let mouseX = 0,
         mouseY = 0
+        
+    let windowHalfX = window.innerWidth / 2
+    let windowHalfY = window.innerHeight / 2
 
     init()
     animate()
@@ -64,15 +67,25 @@
         antialias: true // 抗锯齿
       })
       renderer.setSize(window.innerWidth, window.innerHeight) // 渲染大小
-
+      document.addEventListener('mousemove', onDocumentMouseMove, false)
     }
     function animate() {
+      // setInterval() 不精确
       requestAnimationFrame(animate) // 每秒60帧
-      renderer.render(scene, camera)
+      // renderer.render(scene, camera)
+      render()
     }
     function render() {
+      // 地球转一下
+      camera.position.x += (mouseX - camera.position.x) * 0.05
+      camera.position.y += (-mouseY - camera.position.y) * 0.05
       camera.lookAt(scene.position)
+      group.rotation.y -= 0.005
       renderer.render(scene, camera)
+    }
+    function onDocumentMouseMove(e) {
+      mouseX = e.clientX - windowHalfX
+      mouseY = e.clientY - windowHalfY
     }
   </script>
 </body>
