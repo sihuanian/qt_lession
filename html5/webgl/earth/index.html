@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+  <title>Earth 3D</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 录像机 -->
+  <canvas id="webglcanvas"></canvas>
+
+  <script>
+    let canvas, // 3D容器
+        camera, // 相机
+        scene, // 场景 摆放背景，人物上场
+        group,
+        renderer
+
+    let mouseX = 0,
+        mouseY = 0
+
+    init()
+    animate()
+
+    function init() {
+      canvas = document.getElementById('webglcanvas')
+      // canvas.width = window.innerWidth
+      // canvas.height = window.innerHeight
+      // 3D 世界是Camera 拍出来的
+      // 60 是角度， window.innerWidth/window.innerHeight 是宽高比 1-2000px的距离（最近最远）
+      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000)
+      // 正前方
+      camera.position.z = 500
+      // 场景
+      scene = new THREE.Scene() 
+      scene.background = new THREE.Color(0xffffff)
+      group = new THREE.Group()
+      scene.add(group)
+
+      // 图片加载进来
+      let loader = new THREE.TextureLoader()
+      loader.load('./land_ocean_ice_cloud_2048.jpg', function(texture) {
+        // shape 球体 <-> 地球
+        let geometry = new THREE.SphereGeometry(200, 20, 20)
+        let material = new THREE.MeshBasicMaterial({
+          map: texture
+        })
+        let mesh = new THREE.Mesh(geometry, material)
+        // 贴图
+        group.add(mesh)
+      })
+
+      // 渲染器  openGL  web端的实现
+      renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true // 抗锯齿
+      })
+      renderer.setSize(window.innerWidth, window.innerHeight) // 渲染大小
+
+    }
+    function animate() {
+      requestAnimationFrame(animate) // 每秒60帧
+      renderer.render(scene, camera)
+    }
+    function render() {
+      camera.lookAt(scene.position)
+      renderer.render(scene, camera)
+    }
+  </script>
+</body>
+</html>
