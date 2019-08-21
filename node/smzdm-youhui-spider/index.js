@@ -7,6 +7,7 @@ https.get('https://www.smzdm.com/youhui/', function (res) {
     // 与网页编码一致
     res.setEncoding('utf-8')
 
+    // 用来存储整个页面的html结构
     let html = ''
 
     // 当收到一部分数据的时候
@@ -18,6 +19,7 @@ https.get('https://www.smzdm.com/youhui/', function (res) {
         // console.log(html)
 
         let lists = [] // 存储所有数据
+        // load方法加载html
         const $ = cheerio.load(html, {
             decodeEntities: false // 不需要解析 html entity eg: &nbsp;
         })
