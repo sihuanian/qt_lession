@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="temperature">{{ temperature }}</div>
+    <div class="suggest">{{ suggest }}</div>
+    <div class="btn">
+      <button @click="add">add</button>
+      <button @click="reduce">reduce</button>
+    </div>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          temperature: 27,
+          suggest: '短袖'
+        }
+      },
+      /* watch: {
+        // 监听数据源中的属性变化，执行回调函数
+        temperature: function (newValue, oldValue) {
+          // console.log(newValue, oldValue)
+          if (newValue >= 26) {
+            this.suggest = '短袖'
+          } else if (newValue < 26 && newValue > 0) {
+            this.suggest = '夹克'
+          } else {
+            this.suggest = '羽绒服'
+          }
+        }
+      }, */
+      methods: {
+        add() {
+          this.temperature += 5
+        },
+        reduce() {
+          this.temperature -= 5
+        }
+      },
+    })
+    app.$watch('temperature', function (newValue, oldValue) {
+      if (newValue >= 26) {
+        this.suggest = '短袖'
+      } else if (newValue < 26 && newValue > 0) {
+        this.suggest = '夹克'
+      } else {
+        this.suggest = '羽绒服'
+      }
+    })
+  </script>
+</body>
+
+</html>
