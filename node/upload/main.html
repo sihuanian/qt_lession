@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Canvas文件压缩</title>
+</head>
+<body>
+  <input type="file" name="pic" id="file">
+  <br>
+  <script>
+    const oFile = document.getElementById('file')
+    const reader = new FileReader()
+    const img = new Image()
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
+
+    oFile.onchange = function(e) {
+      // console.log(e.target.files)
+      const file = e.target.files[0]
+      console.log(file)
+      if (file.type.indexOf('image') !== -1) {
+        reader.readAsDataURL(file)
+      } else {
+        console.log('这不是一张图片')
+      }
+    }
+    reader.onload = function(e) {
+      // console.log(e.target.result) base64
+      img.src = e.target.result
+      // document.body.appendChild(img)
+    }
+    img.onload = function(e) {
+      let originWidth = this.width
+      let originHeight = this.height
+      let targetWidth = originWidth
+      let targetHeight = originHeight
+      let maxWidth = 400,
+        maxHeight = 400
+      
+      if (originWidth / originHeight > maxWidth / maxHeight) {
+        targetWidth = maxWidth
+        targetHeight = Math.round(maxHeight * (originHeight / originWidth))
+      } else {
+        targetHeight = maxHeight
+        targetWidth = Math.round(maxWidth * (originWidth / originHeight))
+      }
+
+      canvas.width = targetWidth
+      canvas.height = targetHeight
+      context.drawImage(this, 0, 0, targetWidth, targetHeight)
+      document.body.appendChild(canvas)
+    }
+  </script>
+</body>
+</html>
