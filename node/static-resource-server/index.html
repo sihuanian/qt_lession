@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- accept 接收图片类型 -->
+  <img id="imagePreview">
+  <input type="file" id="imageSelector" accept=".png,.jpg,.jpeg,.gif">
+  <script>
+    const oFile = document.getElementById('imageSelector')
+    const imagePreview = document.getElementById('imagePreview')
+    oFile.addEventListener('change', e => {
+      const file = e.target.files[0]
+      // console.log(file instanceof Blob) 文件是一个Blob 实例
+      const url = URL.createObjectURL(file) // 
+      imagePreview.src = url // blob:http://127.0.0.1:8080/2261e63b-483f-4abd-a40e-5d402b21e007 临时url地址
+    })
+  </script>
+</body>
+</html>
