@@ -12,7 +12,7 @@ class HashRouter {
       handler // 处理函数
       // container 显示相应的page　的内容
       // 由外界决定
-      handler = this.routers[hash]
+      // handler = this.routers[hash]
       // handler() 
       if (!this.routers.hasOwnProperty(hash)) {
         handler = this.routers['404']
@@ -22,7 +22,7 @@ class HashRouter {
       try {
         handler.apply(this)
       } catch (e) {
-        console.error(e);
+        console.error(e)
         ;(this.routers['error'] || function () {}).call(this, e)
       }
   }
