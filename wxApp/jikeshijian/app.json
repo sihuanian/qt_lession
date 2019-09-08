@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/discovery/discovery",
+    "pages/lesson/lesson",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "极客时间",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#929292",
+    "selectedColor": "#ff5700",
+    "list": [
+      {
+        "pagePath": "pages/discovery/discovery",
+        "text": "发现",
+        "iconPath": "assets/images/tabBar/发现.png",
+        "selectedIconPath": "assets/images/tabBar/发现-active.png"
+      },
+      {
+        "pagePath": "pages/lesson/lesson",
+        "text": "发现",
+        "iconPath": "assets/images/tabBar/讲堂.png",
+        "selectedIconPath": "assets/images/tabBar/讲堂-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "发现",
+        "iconPath": "assets/images/tabBar/我的.png",
+        "selectedIconPath": "assets/images/tabBar/我的-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

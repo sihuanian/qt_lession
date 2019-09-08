@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="hot">
+    <view class="hot-icon iconfont icon-redian">热点</view>
+    <view class="hot-text">萌新问！ 全栈工程师到...</view>
+    <view class="hot-arrow iconfont icon-iconfontyoujiantou-copy-copy-copy-copy"></view>
+  </view>
+  <view class="suggest">
+    <swiper duration="{{500}}">
+      <block wx:for="{{lessons}}" wx:key="index">
+        <swiper-item>
+          <view class="suggest-top">
+            <image mode="aspectFill" src="https://cdn.pixabay.com/photo/2017/07/04/12/26/sea-2470908__340.jpg" />
+          </view>
+          <image src="{{item.imgUrl}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
