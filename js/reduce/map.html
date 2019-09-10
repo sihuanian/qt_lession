@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Map</title>
+</head>
+<body>
+  <script>
+    const money = [10, 11, 12]
+
+    console.time('map')
+    const mapMoney = money.map(item => {
+      return item * 10
+    })
+    console.timeEnd('map')
+
+    console.log(mapMoney)
+
+    console.time('for')
+    const newMoney = []
+    for (let i = 0; i < money.length; i++) {
+      newMoney.push(money[i] * 10)
+    }
+    console.timeEnd('for')
+
+    console.time('reduce')
+    const count = money.reduce((prev, curr) => {
+      console.log(prev, curr)
+      return prev + curr
+    }, 100)
+    console.timeEnd('reduce')
+
+  </script>
+</body>
+</html>
