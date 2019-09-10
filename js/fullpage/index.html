@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>fullpage</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 9999;
+  }
+  .scrollContainer {
+    display: none;
+    transition: all ease 1s;
+  }
+  .slide1 {
+    background-color: red;
+  }
+  .slide2 {
+    background-color: green;
+  }
+  .slide3 {
+    background-color: yellow;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="scrollContainer">
+      <div class="slide slide1"></div>
+      <div class="slide slide2"></div>
+      <div class="slide slide3"></div>
+    </div>
+  </div>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+  <script>
+    // 为页面作准备，页面的高度 display: none;
+    // 什么都不显示， .show
+    // jquery 页面加载完成事件
+    // $() $(fn)  DOM ready 事件的监听DOMContentLoaded(html css加载完成)     $('')
+    // JQUERY API真的很好，简化，兼容很好
+    $(function () {
+      // console.log('DOM ready')
+      var $container = $('.container')
+      // console.log($container)
+      var $scroll = $container.find('.scrollContainer')
+      // container height -> scroll
+      // scroll 显示出来
+      var height = $container.height()
+      // console.log(height)
+      var len = 3
+      var current = 1
+      // 所有子页面
+      $container.find('.slide').css('height', height + 'px')
+      $scroll.show()
+
+      // JSON 面向对象
+      var page = {
+        isScrolling: false, // 开关变量
+        start: 0,
+        prev () {
+          if ((current - 1) > 0) {
+            current--
+            page.move(current)
+          }
+        },
+        next () {
+          // 还可以向下滑
+          if ((current + 1) <= len) {
+            current++
+            page.move(current)
+          }
+        },
+        move (index) {          
+          page.isScrolling = true
+          var di = - (index - 1) * height + 'px'
+          $scroll.css('transform', 'translateY(' + di + ')')
+        },
+        moveEnd () {
+          page.isScrolling = false
+        }
+      }
+
+      var mouseWheelhandle = function (e) {
+        // 向上还是向下？
+        // 如果动画正在执行不执行滚动事件
+        if (page.isScrolling) {
+          return
+        }
+        var deltaY = e.originalEvent.deltaY
+        // console.log(deltaY)
+        if (deltaY > 0) {
+          page.next()
+        } else if (deltaY < 0) {
+          page.prev()
+        }
+      }
+      var keyboardHandle = function (e) {
+        if (page.isScrolling) {
+          return
+        }
+        var key = e.keyCode || e.which // e.whick IE7 以下 e.keyCode 的兼容性
+        switch (key) {
+          case 37:
+            page.prev()
+            break
+          case 38:
+            page.prev()
+            break
+          case 39:
+            page.next()
+            break
+          case 40:
+            page.next()
+            break
+        }
+      }
+
+      $scroll.on('webkitTransitionEnd', page.moveEnd)
+      $scroll.on('transitionEnd', page.moveEnd)
+      $(document).on('mousewheel', mouseWheelhandle)
+      $(document).on('keydown', keyboardHandle)
+    })
+
+    // 需要加载img 
+    // window.onload = function () {
+    //   console.log('整个页面加载完成了')
+    // }
+  </script>
+</body>
+</html>
