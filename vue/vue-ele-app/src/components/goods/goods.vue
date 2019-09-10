@@ -13,7 +13,7 @@
       </div>
       <div class="foods-wrapper" ref="foodsWrapper">
         <ul>
-          <li v-for="(item, index) in goods" :key="index" class="food-list">
+          <li v-for="(item, index) in goods" :key="index" ref="foodList" class="food-list">
             <h1 class="title">{{ item.name }}</h1>
             <ul>
               <li v-for="(food, index) in item.foods" class="food-item border-top" :key="index">
@@ -32,7 +32,7 @@
                     <div class="old" v-if="food.oldPrice">￥{{ food.oldPrice }}</div>
                   </div>
                   <div class="cartcontrol-wrapper">
-                    +
+                    <CartControl />
                   </div>
                 </div>
               </li>
@@ -46,13 +46,31 @@
 </template>
 
 <script>
-import BScrool from 'better-scroll'
+import BScroll from 'better-scroll'
+import CartControl from '@/components/cartcontrol/cartcontrol'
 export default {
-  data() {
+  data () {
     return {
       goods: [],
-      currentIndex: 0
+      listHeight: [], // 存储每个菜系的DOM 结构的高度
+      scrollY: 0
     }
+  },
+  components: {
+    CartControl
+  },
+  computed: {
+    // 菜单目录点击添加current 类名
+    currentIndex () {
+      for (let i = 0; i < this.listHeight.length; i++) {
+        let height1 = this.listHeight[i],
+          height2 = this.listHeight[i + 1]
+        if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
+          return i
+        }
+      }
+      return 0
+    }  
   },
   created () {
     this.classMap = ['decrease', 'discount', 'guarantee', 'invoice', 'special']
@@ -61,26 +79,51 @@ export default {
         console.log(res.data.data)
         if (res.data.errno === 0) {
           this.goods = res.data.data
-          this.$nextTick(() => { // 页面渲染完成才会执行 使用ref
-            this._initScrool()
+          this.$nextTick(() => { // 页面渲染完成才会执行 使用ref 的时候防止报错
+            this._initScroll()
+            this._calculateHeight()
           })
         }
       })
   },
   methods: {
+    // 点击左侧菜品目录右侧跳转到相应的菜系
     selectMenu (index, event) {
       // console.log(event)
-      this.currentIndex = index
+      // this.currentIndex = index
+      let foodList = this.$refs.foodList
+      let el = foodList[index] // 菜系的li
+      // 被添加betterScroll 才可以添加其它方法, params1 DOM元素,params2 滚动完成时间
+      // 跳转到相应目标DOM
+      this.foodsScroll.scrollToElement(el, 300)
     },
-    _initScrool () {
+    // 使menu 和 菜品列表可以滚动
+    _initScroll () {
       // params1 作用的DOM 结构
       // params2 
-      this.menuScrool = new BScrool(this.$refs.menuWrapper, {
+      this.menuScroll = new BScroll(this.$refs.menuWrapper, {
         click: true // 保留点击事件
       })
-      this.foodsScrool = new BScrool(this.$refs.foodsWrapper, {
-        click: true
+      this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
+        click: true,
+        probeType: 3 // 有时候我们需要知道滚动的位置
       })
+      // betterScroll中监听滚动事件 pos： {x:  , y:  }
+      this.foodsScroll.on('scroll', pos => {
+        // console.log(pos)
+        this.scrollY = Math.abs(Math.round(pos.y))
+      })
+    },
+    // 计算出来菜系的高度
+    _calculateHeight () {
+      let foodList = this.$refs.foodList
+      let height = 0
+      this.listHeight.push(height)
+      for (let i = 0; i < foodList.length; i++) {
+        let item = foodList[i]
+        height += item.clientHeight
+        this.listHeight.push(height)
+      }
     }
   }
 }

@@ -8,3 +8,10 @@
 
 安装butter-scrool
 > npm install better-scroll --save 
+
+官方文档： http://ustbhuangyi.github.io/better-scroll/doc/options.html
+
+
+- 组件拆分原则
+1. 有自己的独立特性
+2. 复用性高
