@@ -15,3 +15,7 @@
 - 组件拆分原则
 1. 有自己的独立特性
 2. 复用性高
+
+
+1. 子组件： $emit(funcName, params)
+2. 父组件：子组件中　@click="funcName"

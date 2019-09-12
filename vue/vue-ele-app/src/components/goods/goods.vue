@@ -32,7 +32,7 @@
                     <div class="old" v-if="food.oldPrice">￥{{ food.oldPrice }}</div>
                   </div>
                   <div class="cartcontrol-wrapper">
-                    <CartControl />
+                    <CartControl :food="food" @add="addFood" />
                   </div>
                 </div>
               </li>
@@ -41,6 +41,7 @@
         </ul>
       </div>
       <!-- 购物车 -->
+      <ShopCart :selectFoods="selectFoods" :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice" />
     </div>
   </div>
 </template>
@@ -48,6 +49,7 @@
 <script>
 import BScroll from 'better-scroll'
 import CartControl from '@/components/cartcontrol/cartcontrol'
+import ShopCart from '@/components/shopcart/shopcart'
 export default {
   data () {
     return {
@@ -56,8 +58,14 @@ export default {
       scrollY: 0
     }
   },
+  props: {
+    seller: {
+      type: Object
+    }
+  },
   components: {
-    CartControl
+    CartControl,
+    ShopCart
   },
   computed: {
     // 菜单目录点击添加current 类名
@@ -70,6 +78,18 @@ export default {
         }
       }
       return 0
+    },
+    // 筛选出含有我们添加count 属性的数组，即我们点击了添加商品
+    selectFoods () {
+      let foods = []
+      this.goods.forEach((good) => {
+        good.foods.forEach(food => {
+          if (food.count) {
+            foods.push(food)
+          }
+        })
+      })
+      return foods
     }  
   },
   created () {
@@ -124,7 +144,8 @@ export default {
         height += item.clientHeight
         this.listHeight.push(height)
       }
-    }
+    },
+    addFood () {}
   }
 }
 </script>
