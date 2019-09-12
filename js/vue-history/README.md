@@ -26,3 +26,13 @@
   load 
   window.addEventListener('hashchange', this.load.bind(this))
   bind this 一样，返回一个新的函数，适合事件监听时使用
+
+  ## HashRouter 实现步骤
+
+  1. url 中的 hash 改变了之后会出发hashchange 事件，为整个window 绑定hashchange 的事件监听
+  2. 注册不同的处理方式 this.routers {'path': function}
+    1. 404 this.routers 中不存在对应的 hash属性
+    2. error  执行出错
+    3. hash存在 正常的hash 处理
+  3. 使用 location 对象得到hash 的地址location.hash.slice(1) '#/login' => '/login'
+  4. 根据不同的hash 执行不同的处理函数
