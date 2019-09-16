@@ -19,3 +19,9 @@
 
 1. 子组件： $emit(funcName, params)
 2. 父组件：子组件中　@click="funcName"
+
+- 父组件调用子组件的方法
+  1. 在父组件的html 使用子组件的DOM 结构中加入ref
+  2. 调用子组件中的方法
+  > <ShopCart ref="shopcart" 
+  > this.$refs.shopcart.drop(target)
