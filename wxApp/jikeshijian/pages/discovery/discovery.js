@@ -15,6 +15,7 @@ Page({
     const that = this
     wx.request({
       url: 'https://www.easy-mock.com/mock/5d2ed7f18a035669a02b4d3c/movie/discovery',
+      // url: '../../assets/data/discovery.json',
       success (res) {
         console.log(res.data.data.lessons)
         that.setData({

@@ -45,7 +45,7 @@
 }
 .suggest-top {
   width: 100%;
-  height: 280rpx;
+  height: 320rpx;
   border-radius: 0 0 50% 50%;
   background-color: #ff0;
   overflow: hidden;
@@ -53,4 +53,64 @@
 .suggest-top image {
   width: 100%;
   height: 100%;
+}
+.suggest swiper {
+  width: 100%;
+  height: 100%;
+}
+.avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  border: 10rpx solid #fff;
+  position: absolute;
+  top: 220rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.lesson {
+  text-align: center;
+  padding-top: 70rpx;
+  letter-spacing: 2rpx;
+}
+.authorName {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+}
+.title {
+  font-size: 16px;
+  color: #8f8f8f;
+  margin-bottom: 80rpx;
+}
+.lessonName {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+}
+.introduce {
+  font-size: 12px;
+  color: #8f8f8f;
+}
+.orderNumber {
+  font-size: 14px;
+  color: #8f8f8f;
+  position: absolute;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.person-icon {
+  color: #b3b3b3;
+  margin-right: 10rpx;
+}
+.new {
+  position: absolute;
+  right: 0;
+  top: 40rpx;
+  color: #fff;
+  background-color: #FA8919;
+  font-size: 16px;
+  font-weight: 500;
 }
