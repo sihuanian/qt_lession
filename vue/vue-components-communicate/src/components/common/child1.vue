@@ -26,6 +26,8 @@ export default {
   },
   created() {
     this.oCount = this.count
+    // console.log(this.$attrs)
+    console.log(this.$listeners)
   },
 }
 </script>
