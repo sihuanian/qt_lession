@@ -1,11 +1,17 @@
 <view class="container">
-  <view class="hot">
-    <view class="hot-icon iconfont icon-redian">热点</view>
-    <view class="hot-text">萌新问！ 全栈工程师到...</view>
-    <view class="hot-arrow iconfont icon-iconfontyoujiantou-copy-copy-copy-copy"></view>
-  </view>
+  <swiper autoplay interval="{{3000}}" duration="{{500}}" circular vertical class="hot-swiper">
+    <block wx:for="{{article}}" wx:for-item="itm" wx:for-index="idx" wx:key="idx">
+      <swiper-item>
+        <view class="hot">
+          <view class="hot-icon iconfont icon-redian">热点</view>
+          <view class="hot-text">{{ itm.title }}</view>
+          <view class="hot-arrow iconfont icon-iconfontyoujiantou-copy-copy-copy-copy"></view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
   <view class="suggest">
-    <swiper duration="{{500}}">
+    <swiper duration="{{500}}" bindchange="changeIndex">
       <block wx:for="{{lessons}}" wx:key="index">
         <swiper-item>
           <view class="suggest-top">
@@ -17,11 +23,15 @@
             <view class="title">{{ item.title }}</view>
             <view class="lessonName">{{ item.lessonName }}</view>
             <view class="introduce">{{ item.introduce }}</view>
-            <view class="orderNumber"><text class="person-icon iconfont icon-wode1"></text>{{ item.orderNumber }}人与你共同学习</view>
+            <view class="orderNumber">
+              <text class="person-icon iconfont icon-wode1"></text>
+              {{ item.orderNumber }}人与你共同学习
+            </view>
           </view>
           <view class="new">上新</view>
         </swiper-item>
       </block>
     </swiper>
+    <view class="index" ><text>{{index + 1}}</text> / {{lessons.length}}</view>
   </view>
 </view>

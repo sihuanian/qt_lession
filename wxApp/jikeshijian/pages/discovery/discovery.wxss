@@ -5,6 +5,10 @@
   padding: 40rpx 80rpx 0;
   box-sizing: border-box;
 }
+.hot-swiper {
+  height: 70rpx;
+  margin-bottom: 20rpx;
+}
 .hot {
   display: flex;
   justify-content: space-between;
@@ -19,7 +23,7 @@
 .hot-icon {
   background-color: #fd9027;
   color: #fff;
-  width: 120rpx;
+  min-width: 120rpx;
   height: 100%;
   line-height: 70rpx;
   border-radius: 20rpx 0 0 20rpx;
@@ -29,6 +33,11 @@
   background-color: #fff;
   color: #fd9027;
   line-height: 70rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 20rpx;
+  height: 100%;
 }
 .hot-arrow {
   line-height: 70rpx;
@@ -113,4 +122,19 @@
   background-color: #FA8919;
   font-size: 16px;
   font-weight: 500;
+  border-radius: 24rpx 0 0 24rpx;
+  padding: 6rpx 16rpx 6rpx 20rpx;
+}
+.index {
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  font-size: 28rpx;
+  color: #8f8f8f;
+  left: 50%;
+  margin-top: 32rpx;
+  transform: translateX(-50%);
+}
+.index text {
+  color: #F7752A;
 }

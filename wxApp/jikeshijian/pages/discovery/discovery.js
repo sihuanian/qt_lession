@@ -1,11 +1,21 @@
 // pages/discovery/discovery.js
+const json = require('./data')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    lessons: []
+    lessons: [],
+    index: 0
+  },
+
+  changeIndex (e) {
+    console.log(e.detail.current)
+    this.setData({
+      index: e.detail.current
+    })
+    console.log(this.data.index)
   },
 
   /**
@@ -15,11 +25,17 @@ Page({
     const that = this
     wx.request({
       url: 'https://www.easy-mock.com/mock/5d2ed7f18a035669a02b4d3c/movie/discovery',
-      // url: '../../assets/data/discovery.json',
       success (res) {
         console.log(res.data.data.lessons)
         that.setData({
-          lessons: res.data.data.lessons
+          lessons: res.data.data.lessons,
+          article: res.data.data.article
+        })
+      },
+      fail () {
+        that.setData({
+          lessons: json.lessons,
+          article: json.article
         })
       }
     })
