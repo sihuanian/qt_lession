@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1. 
+    function foo () {
+      console.log(this) 
+    }
+    foo() // window
+    // 2
+    var status = 'global'
+    var obj = {
+      status: 'obj',
+      getStatus() {
+        return this.status
+      }
+    }
+    console.log(obj.getStatus()) // 'obj'
+    var fun = obj.getStatus
+    console.log(fun()) // 'global'
+    // 调用时候才能决定this 的指向
+    // 3
+    // call apply bind
+    // bind  返回一个绑定了this 的函数
+    var obj3 = {
+      name: 'lihua'
+    }
+    function bar() {
+      console.log(this.name)
+    }
+    let baz = bar.bind(obj3)
+    baz()
+    let bzz = bar.call(obj3)
+
+    // 4 new
+    function Test () {
+      this.name = 'name'
+    }
+    let test = new Test()
+    // Test里面的this 指向 new 出来的实例
+    // 往实例添加了属性
+    console.log(test)
+
+    // 优先级
+    // new > bind > obj.getStatus() > getStatus()
+    var bindObj = {
+      name: '123'
+    }
+    function TestNew() {
+      this.age = 21
+    }
+    const BindTestNew = TestNew.bind(bindObj)
+    BindTestNew()
+    console.log(new BindTestNew())
+    console.log(bindObj)
+  </script>
+</body>
+
+</html>
