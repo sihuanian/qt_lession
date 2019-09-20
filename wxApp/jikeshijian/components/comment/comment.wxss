@@ -1,0 +1,61 @@
+@import '/assets/style/font.wxss';
+
+.comment-container {
+  padding: 40rpx 30rpx 0 40rpx;
+}
+.comment-header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80rpx;
+}
+.comment-header text {
+  font-size: 40rpx;
+  padding-top: 10rpx;
+}
+.comment-header .share {
+  background-color: #F7FAFC;
+  color: #F4A75A;
+  font-size: 30rpx;
+  padding: 16rpx 30rpx;
+  border-radius: 40rpx;
+}
+.comment-item {
+  padding-bottom: 30rpx;
+}
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 80rpx;
+}
+.user-comment {
+  padding-left: 20rpx;
+  display: inline-block;
+}
+.username {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-bottom: 20rpx;
+}
+.comment-time {
+  font-size: 24rpx;
+  color: #929292;
+  margin-bottom: 20rpx;
+}
+.comment-content {
+  color: #0e0e0e;
+  font-size: 36rpx;
+  margin-bottom: 40rpx;
+}
+.comment-icon {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #aaaaaa;
+  width: 580rpx;
+  margin-left: 95rpx;
+}
+.zan {
+  color: #ff8000;
+}

@@ -17,8 +17,9 @@
   height: 70rpx;
   background-color: #fff;
   margin: 0 auto;
-  border-radius: 20rpx;
+  border-radius: 35rpx;
   margin-bottom: 20rpx;
+  overflow: hidden;
 }
 .hot-icon {
   background-color: #fd9027;
@@ -26,7 +27,6 @@
   min-width: 120rpx;
   height: 100%;
   line-height: 70rpx;
-  border-radius: 20rpx 0 0 20rpx;
   text-align: center;
 }
 .hot-text {
@@ -91,6 +91,10 @@
   font-size: 16px;
   color: #8f8f8f;
   margin-bottom: 80rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 60rpx;
 }
 .lessonName {
   font-size: 22px;

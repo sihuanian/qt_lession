@@ -18,6 +18,15 @@ Page({
     console.log(this.data.index)
   },
 
+  toArticle () {
+    wx.navigateTo({
+      url: '/pages/article/article',
+      success () {
+        console.log('toArticle')
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

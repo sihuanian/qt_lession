@@ -1,0 +1,21 @@
+<view class="comment-container">
+  <view class="comment-header">
+    <text>全部评论</text>
+    <text class="share">邀请群友参加讨论<text class="iconfont icon-iconfontyoujiantou-copy-copy-copy-copy"></text></text>
+  </view>
+  <view class="comment-item">
+    <image src="/assets/images/logo.jpg" class="avatar" />
+    <view class="user-comment">
+      <view class="username">yaomon</view>
+      <view class="comment-time">2019-09-10</view>
+      <view class="comment-content">
+        Flask
+      </view>
+    </view>
+    <view class="comment-icon">
+      <text class="iconfont icon-pinglun"></text>
+      <text class="iconfont icon-dianzan {{isZan ? 'zan' : ''}}" bindtap="zan"></text>
+      <text class="iconfont icon-zhuanfa"></text>
+    </view>
+  </view>
+</view>

@@ -1,5 +1,5 @@
 <view class="container">
-  <swiper autoplay interval="{{3000}}" duration="{{500}}" circular vertical class="hot-swiper">
+  <swiper bindtap="toArticle" autoplay interval="{{3000}}" duration="{{500}}" circular vertical class="hot-swiper">
     <block wx:for="{{article}}" wx:for-item="itm" wx:for-index="idx" wx:key="idx">
       <swiper-item>
         <view class="hot">
