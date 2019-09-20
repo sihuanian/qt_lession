@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>compose</title>
+</head>
+<body>
+  <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
+  <script>
+    // 面向对象
+    // 函数式编程 
+    // 组合：把函数的功能组合起来
+    // 继承：把类组合起来
+    let str = 'javascript'
+    // 1. 转大字
+    // 2. 逆序
+    let util = {
+      fn: (str) => {
+        let upperStr = str.toUpperCase()
+        return Array.from(upperStr).reverse().join('')
+      },
+      toUp (str) {
+        return str.toUpperCase()
+      },
+      reverseStr (str) {
+        return util.toArray(str).reverse().join('')
+      },
+      toArray (str) {
+        return [].slice.call(str)
+      }
+    }
+    console.log(util.fn(str))
+    console.log(util.reverseStr(util.toUp(str)))
+    // 1. 转大字
+    // 2. 转数组
+    const toUpperCase = str => str.toUpperCase()
+    const reverse = str => str.split('').reverse()
+
+    const reUp = _.compose(reverse, toUpperCase)
+    const func1 = _.compose(util.toArray, util.toUp)
+
+    console.log(reUp(str))
+    console.log(func1(str))
+
+    // 实现compose 1.0.0
+    function compose1(func1, func2) {
+      return function (str) {
+        return func1(func2(str))
+      }
+    }
+    console.log(compose1(util.toArray, util.toUp)(str))
+
+    // compose 1.0.1
+    function compose2 (...fns) {
+      return fns.reduce((f1, f2) => {
+        return function (str) {
+          return f1(f2(str))
+        }
+      })
+    }
+    console.log(compose2(util.reverseStr, util.toArray, util.toUp)(str))
+  </script>
+</body>
+</html>
