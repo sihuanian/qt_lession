@@ -1,11 +1,12 @@
 // pages/article.js
+import data from '../../components/comment/data'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    comments: data.data.comments
   },
 
   /**

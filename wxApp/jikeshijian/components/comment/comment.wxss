@@ -18,6 +18,10 @@
   font-size: 30rpx;
   padding: 16rpx 30rpx;
   border-radius: 40rpx;
+  display: inline-block;
+}
+.share text {
+  font-size: 24rpx;
 }
 .comment-item {
   padding-bottom: 30rpx;
@@ -26,12 +30,17 @@
   width: 80rpx;
   height: 80rpx;
   border-radius: 50%;
-  display: inline-block;
+  /* display: inline-block; */
+  float: left;
   margin-bottom: 80rpx;
 }
 .user-comment {
   padding-left: 20rpx;
-  display: inline-block;
+  padding-top: 10rpx;
+  /* display: inline-block; */
+  box-sizing: border-box;
+  float: left;
+  width: 590rpx;
 }
 .username {
   font-size: 30rpx;
@@ -47,6 +56,12 @@
   color: #0e0e0e;
   font-size: 36rpx;
   margin-bottom: 40rpx;
+}
+.content-hide {
+  display: -webkit-box;             /*将对象转为弹性盒模型展示*/
+  -webkit-box-orient: vertical;     /*设置弹性盒模型子元素的排列方式*/
+  -webkit-line-clamp: 5;            /*限制文本行数*/
+  overflow: hidden;  
 }
 .comment-icon {
   display: flex;

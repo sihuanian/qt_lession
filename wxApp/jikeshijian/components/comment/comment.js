@@ -4,14 +4,16 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    data: {
+      type: Object
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    isZan: false
+    isZan: false,
   },
 
   /**
@@ -19,6 +21,7 @@ Component({
    */
   methods: {
     zan (e) {
+      console.log(e)
       this.setData({
         isZan: !this.data.isZan
       })
