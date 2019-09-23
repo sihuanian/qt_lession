@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>parseInt第二个参数的含义</title>
+</head>
+<body>
+  <script>
+    // parseInt params2 进制 [2, 8, 10, 16] 默认为10，
+    // 第二个参数为将第一个参数视为N 进制，最后都会返回十进制
+    const res = ['1', '2', '3'].map(parseInt)
+    // '1' 0 parseInt('1', 0)  0 -> 10  1
+    // '2' 0 parseInt('2', 1)  NaN
+    // '3' 0 parseInt('3', 2)  NaN
+
+    const result = ['1', '2', '3'].map(item => parseInt(item))
+    console.log(res) // [1, NaN, NaN]
+    // 函数是一等公民，它和其他的变量有同等地位
+    function foo(a, b) {
+      console.log(a)
+      b()
+    }
+    function bar() {
+      console.log('bar')
+    }
+    foo(1, bar)
+    ;['1', '2', '3'].map((a, b, c) => {
+      console.log(a, b, c)
+    })
+    function bar123(d, e, f) {
+      console.log(d, e, f)
+    }
+    ;['1', '2', '3'].map(bar123)
+  </script>
+</body>
+</html>

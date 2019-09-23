@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>提升</title>
+</head>
+<body>
+  <script>
+    console.log(a)
+    var a = 10
+    function a() {
+      console.log('123')
+    }
+
+    // function 声明和赋值都会提升
+
+    var x = 1,
+      y = 0,
+      z = 0;
+    // function add(x) {
+    //   return (x = x + 1);
+    // }
+    y = add(x); // 4
+    console.log(y) // 4
+    function add(x) {
+      return (x = x + 3);
+    }
+    z = add(x); // 4
+    console.log(z) // 4
+
+    foo1()
+    // 函数声明
+    function foo1() {
+      console.log('foo1')
+    }
+    // foo2() TypeError foo2 is not a function
+    // 函数表达式
+    var foo2 = function () {
+      console.log('foo2')
+    }
+  </script>
+</body>
+</html>
