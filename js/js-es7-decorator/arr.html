@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 怎么知道数组元素发生变化
+    let arr = [1, 2, 3]
+    // 劫持 version1
+    // function $push(element) {
+    //   // 
+    //   return Array.prototype.push(element)
+    // }
+    // $push(1)
+    // version2
+    let originalPush = Array.prototype.push
+    Array.prototype.push = function (...args) {
+      console.log('数组改了')
+      originalPush.call(this, ...args)
+    }
+    arr.push(4)
+  </script>
+</body>
+</html>
