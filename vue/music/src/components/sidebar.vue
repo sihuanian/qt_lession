@@ -113,9 +113,11 @@ export default {
     .menu 
       margin-top px2rem(30px)
       ul 
+            padding-inline-start 0px
         li 
           height px2rem(90px)
           line-height px2rem(90px)
+          list-style none
           a 
             display block
             padding-left px2rem(60px)

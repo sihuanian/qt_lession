@@ -7,6 +7,7 @@ import fastclick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
 import def_lazy_img from '../static/img/loading.gif'
 import store from './vuex/store'
+import '../static/css/reset.css'
 
 Vue.use(VueLazyLoad, {
   loading: def_lazy_img // 默认加载不出来的图片显示 def_lazy_img
