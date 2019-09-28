@@ -7,3 +7,12 @@
     loading: def_lazy_img // 默认加载不出来的图片显示 def_lazy_img
   })
   ```
+3. better-scroll
+  1. 引入better-scroll
+  > import BScroll from 'better-scroll'
+  2. 需要滚动的标签上加入 ref
+  3. this.name = new BScroll(this.$refs.wrapper, {
+    click: ,
+    probeType: ,
+    ...
+  })

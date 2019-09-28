@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import BScrool from "better-scroll";
+import BScroll from "better-scroll";
 const DIRECTION_H = "horizontal";
 const DIRECTION_V = "vertical";
 
@@ -77,7 +77,7 @@ export default {
       if (!this.$refs.wrapper) {
         return;
       }
-      this.scroll = new BScrool(this.$refs.wrapper, {
+      this.scroll = new BScroll(this.$refs.wrapper, {
         click: this.click,
         probeType: this.probeType,
         eventPassthrough:
