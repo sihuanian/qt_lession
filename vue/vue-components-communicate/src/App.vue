@@ -8,7 +8,8 @@
     <!-- <p>child3-------------------</p>
     <Child3 @fromChild="fromChild" />
     <span>{{ message }}</span> -->
-    
+    <One />
+    <First />
     <router-view/>
   </div>
 </template>
@@ -17,12 +18,16 @@
 import Child1 from './components/common/child1'
 import Child2 from './components/common/child2'
 import Child3 from './components/common/child3'
+import One from './components/1'
+import First from './components/first'
 export default {
   name: 'App',
   components: {
     Child1,
     Child2,
-    Child3
+    Child3,
+    One,
+    First
   },
   data() {
     return {
