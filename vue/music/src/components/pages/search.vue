@@ -31,7 +31,7 @@
     </div>
     <!-- 搜索结果 -->
     <div class="search-result" v-show="query" >
-      <v-suggest></v-suggest>
+      <v-suggest :query="query"></v-suggest>
     </div>
   </div>
 </template>
@@ -44,7 +44,7 @@ import suggest from '@/components/suggest'
 export default {
   data() {
     return {
-      query: false, // 临时使用的值
+      query: '',
       shortcut: [],
       refreshDelay: 1,
       hotKey: [
@@ -62,8 +62,8 @@ export default {
     'v-suggest': suggest
   },
   methods: {
-    onQueryChange () {
-
+    onQueryChange (e) {
+      this.query = e
     },
     addQuery () {
 

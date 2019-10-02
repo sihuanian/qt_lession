@@ -5,7 +5,7 @@ const vue = new Vue()
 
 // axios的默认配置
 axios.defaults.timeout = 10000 // 请求超时时间
-axios.defaults.baseUrl = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://localhost:3000'
 
 // 返回状态判断(响应拦截器)
 axios.interceptors.response.use(res => {
