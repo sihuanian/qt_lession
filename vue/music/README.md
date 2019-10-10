@@ -16,3 +16,6 @@
     probeType: ,
     ...
   })
+
+4. lyric-parser
+  歌词解析器

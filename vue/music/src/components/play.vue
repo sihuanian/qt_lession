@@ -96,11 +96,12 @@
 
 <script>
 import scroll from '@/components/scroll'
+import { mapActions, mapMutations, mapState, mapGetters } from 'vuex'
+import api from '@/api'
 export default {
   name:'play',
   data() {
     return {
-      playList: [1],
       currentTime: 0,
       duration: 0,
       playingLyric: '听妈妈的话',
@@ -125,14 +126,18 @@ export default {
     leave () {},
     afterLeave () {},
     currentSong () {},
-    back () {},
+    back () {
+      this.setFullScreen(false)
+    },
     middleTouchEnd () {},
     changeMode () {},
     prev () {},
-    playing () {},
     togglePlaying () {},
     showPlaylist () {},
     next () {},
+    ...mapMutations({
+      setFullScreen: 'SET_FULL_SCREEN'
+    })
   },
   computed: {
     cdCls () {
@@ -140,8 +145,26 @@ export default {
     },
     disableCls () {
       return this.songReady ? '' : 'disable'
+    },
+    ...mapGetters([
+      'playList',
+      'playing'
+    ])
+  },
+  watch: {
+    playing (newPlaying) {
+      if (!this.songReady) {
+        return
+      }
+      const audio = this.$refs.audio
+      this.$nextTick(() => {
+        newPlaying ? audio.play() : audio.pause()
+      })
+    },
+    currentSong () {
+
     }
-  }
+  },
 }
 </script>
 

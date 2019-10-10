@@ -31,7 +31,7 @@
     </div>
     <!-- 搜索结果 -->
     <div class="search-result" v-show="query" >
-      <v-suggest :query="query"></v-suggest>
+      <v-suggest :query="query" @select="saveSearch" @listScroll="blurInput" ref="suggest"></v-suggest>
     </div>
   </div>
 </template>
@@ -41,20 +41,19 @@ import searchBox from '@/components/searchBox'
 import scroll from '@/components/scroll'
 import searchList from '@/components/searchList'
 import suggest from '@/components/suggest'
+import api from '@/api'
+import { searchMixin } from '@/common/mixin'
 export default {
   data() {
     return {
       query: '',
       shortcut: [],
       refreshDelay: 1,
-      hotKey: [
-        {first: '要放假'},
-        {first: '要放假23'},
-        {first: '要放假dsjfasklfjlsajfls'}
-      ],
+      hotKey: [],
       searchHistory: [1]
     }
   },
+  mixins: [searchMixin], // 合并所有属性,使用混入使用saveSearch
   components: {
     'v-search-box': searchBox,
     'v-scroll': scroll,
@@ -67,8 +66,20 @@ export default {
     },
     addQuery () {
 
-    }
+    },
+    // 获取关键字
+    _getHotKey () {
+      api.HotSearch().then(res => {
+        if (res.code === 200) {
+          this.hotKey = res.result.hots.slice(0, 10)
+        }
+      })
+    },
+    blurInput () {}
   },
+  created() {
+    this._getHotKey()
+  }
 }
 </script>
 
