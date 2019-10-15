@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">按钮</button>
+  <!-- type="module" 支持模块化语法 -->
+  <script type="module">
+    import {counter, obj, changeVal} from './es-module.js'
+    console.log(counter, obj, changeVal) // 3 {name: 'sihuanian'} function
+    changeVal()
+    console.log(counter, obj, changeVal) // 4 {name: 'kobe'} function
+    // import 的时候都是引用的关系
+    // import() 
+    /* document.getElementById('btn').addEventListener('click', () => {
+      import('./es-module.js').then(mod => {
+        console.log(mod)
+      })
+    }) */
+  </script>
+</body>
+</html>
