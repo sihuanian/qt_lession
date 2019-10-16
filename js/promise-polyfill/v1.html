@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // promise的特点
+    // 1. new Promise(...) 内部的代码会执行
+    // 2. .then 可以得到resolve的参数
+    function MyPromise(executor) {
+      var self = this
+      this.status = 'pending' // 状态
+      function resolve(val) {
+        self.status = 'resolved'
+        // console.log(val)
+        self.data = val // 将resolve 的参数保存到MyPromise上
+      }
+      function reject() {}
+      executor(resolve, reject)
+    }
+    MyPromise.prototype.then = function(onResolve) {
+      onResolve(this.data)
+    }
+    var p = new MyPromise((resolve, reject) => {
+      resolve(123456)
+    })
+    p.then(res => {
+      console.log(res)
+    })
+  </script>
+</body>
+</html>

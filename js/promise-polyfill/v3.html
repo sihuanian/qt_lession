@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // promise的特点
+    // 1. new Promise(...) 内部的代码会执行
+    // 2. .then 可以得到resolve的参数
+    function MyPromise(executor) {
+      var self = this
+      self.onResolve = null
+      this.status = 'pending' // 状态
+      function resolve(val) {
+        self.status = 'resolved'
+        console.log(self.status)
+        // console.log(val)
+        self.data = val // 将resolve 的参数保存到MyPromise上
+        // 3s -> 
+        self.onResolve && self.onResolve(val)
+      }
+      function reject() {}
+      executor(resolve, reject)
+    }
+    MyPromise.prototype.then = function(onResolve) {
+      var self = this
+      if (self.status === 'resolved') {
+        console.log('resolved111111')
+        onResolve(this.data)
+      } 
+      if(self.status === 'pending') {
+        console.log('pending')
+        return new MyPromise((resolve, reject) => {
+          // self.onResolve = onResolve
+          // 1. 上面的 then 的结果拿到
+          // 2. 拿到上一次then的结果并resolve
+          // 3. onResolve 放到this
+          self.onResolve = function(val) {
+            var x = onResolve(val)
+            resolve(x)
+          }
+        })
+      }
+    }
+    var p = new MyPromise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(123456)
+      }, 3000);
+    })
+    p.then(res => {
+      console.log(res)
+      return res
+    }).then(data => {
+      console.log(data)
+    })
+
+    // var p1 = new Promise((resolve, reject) => {
+    //   resolve('123')
+    // }).then(res => {
+    //   console.log(res)
+    //   return new Promise(reslove => {
+    //     reslove('666')
+    //   })
+    // }).then(data => {
+    //   console.log(data)
+    // })
+  </script>
+</body>
+</html>

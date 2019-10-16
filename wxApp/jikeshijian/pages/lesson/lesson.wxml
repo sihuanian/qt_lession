@@ -1,2 +1,8 @@
-<!--pages/lesson/lesson.wxml-->
-<text>pages/lesson/lesson.wxml</text>
+<van-tabs active="a" color="#FF5200">
+  <van-tab title="订阅专栏" name="a">
+    <my-class />
+  </van-tab>
+  <van-tab title="视频课程" name="b">视频课程</van-tab>
+  <van-tab title="精品课程" name="c">精品课程</van-tab>
+</van-tabs>
+<van-button type="primary">jsfaj</van-button>

@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vant-weapp": "^0.5.20"
+    "vant-weapp": "^0.5.21"
   }
 }

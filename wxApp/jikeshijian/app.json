@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/article/article",
-    "pages/discovery/discovery",
     "pages/lesson/lesson",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/article/article",
+    "pages/discovery/discovery"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,13 +23,13 @@
       },
       {
         "pagePath": "pages/lesson/lesson",
-        "text": "发现",
+        "text": "讲堂",
         "iconPath": "assets/images/tabBar/讲堂.png",
         "selectedIconPath": "assets/images/tabBar/讲堂-active.png"
       },
       {
         "pagePath": "pages/my/my",
-        "text": "发现",
+        "text": "我的",
         "iconPath": "assets/images/tabBar/我的.png",
         "selectedIconPath": "assets/images/tabBar/我的-active.png"
       }

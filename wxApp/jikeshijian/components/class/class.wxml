@@ -1,0 +1,15 @@
+<view class="class-wrapper">
+  <view class="classImg">
+    <image src="https://static001.geekbang.org/resource/image/7a/ed/7a2d83a47012ac2b9d0efbc80f13feed.jpg" />
+    <view class="update-time">每周一/三/五更新</view>
+  </view>
+  <view class="class-desc">
+    <text class="icon iconfont icon-wode1"></text>
+    <text class="classmate">12223人与你共同学习</text>
+    <text class="line">|</text>
+    <view class="class-desc-right">
+      <text class="price">限时￥19.9</text>
+      <text class="nums"> / 10讲</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+@import '../../assets/style/font.wxss';
+
+.class-wrapper {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.classImg {
+  text-align: center;
+  position: relative;
+}
+.classImg image {
+  border-radius: 20rpx 20rpx 0 0;
+  overflow: hidden;
+  width: 100%;
+  height: 320rpx;
+}
+.update-time {
+  position: absolute;
+  right: 0;
+  bottom: 8rpx;
+  padding: 6rpx 20rpx;
+  background-color: #FB8919;
+  color: #fff;
+  border-radius: 20rpx 0 0 20rpx;
+  font-size: 24rpx;
+}
+.class-desc {
+  padding: 0rpx 40rpx;
+  color: #888;
+  background-color: #fff;
+  height: 120rpx;
+  line-height: 120rpx;
+  font-size: 24rpx;
+  position: relative;
+}
+.line {
+  padding: 0 60rpx;
+}
+.icon {
+  padding-right: 20rpx;
+}
+.class-desc-right {
+  float: right;
+}
+.price {
+  color: #FB8919;
+}
