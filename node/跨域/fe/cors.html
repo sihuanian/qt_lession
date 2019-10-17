@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    document.cookie = 'hello=world'
+    // 产生跨域问题
+    let myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/json')
+    myHeaders.append('X-custome', 'abc')
+    fetch('http://localhost:3000/api/books', {
+      method: 'POST',
+      headers: myHeaders,
+      body: { a: 1 },
+      credentials: 'include' // fetch 跨域也会带上cookie
+    })
+      .then(res => {
+        // console.log(res)
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+      })
+  </script>
+</body>
+</html>
