@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>localStorage 扩容</title>
+</head>
+<body>
+  <iframe src="http://localhost:3000/iframe.html" frameborder="0" id="ifame1"></iframe>
+  <script>
+    // localStorage 一个域名5M
+    // 假设localhost:8080 localStorage 不够用了就存在 localhost:3000 上面
+    // postMessage
+    window.onload = function() {
+      const iframe  = document.getElementById('ifame1')
+      const iframeWindow = iframe.contentWindow // iframe 引入的网站的window对象
+      // iframeWindow.postMessage({name: 'sihuanian'}, 'http://localhost:3000')
+      setAnotherOrinigStorage('user', { name: 'sihuanian' }, 'http://localhost:3000')
+      getAnotherOrinigStorage('user', (err, data) => {
+        console.log('data', data)
+      }, 'http://localhost:3000')
+      function getAnotherOrinigStorage(key, cb, url) {
+        window.onmessage = function(e) {
+          // console.log(e) 
+          // e.origin(发送消息的uri http://localhost:3000) e.data(发送的消息) e.source(发送消息的window对象的引用)
+          cb(null, e.data)
+        }
+        iframeWindow.postMessage({ key}, url)
+      }
+      function setAnotherOrinigStorage(key, value, url) {
+        iframeWindow.postMessage({ key, value }, url)
+      }
+    }
+  </script>
+</body>
+</html>
