@@ -38,6 +38,27 @@ let getAllUsers = function () {
   return allServies.query(_sql)
 }
 
+// 注册用户
+let insertUser = function(value) {
+  let _sql = `insert into users set username=?, userpwd=?,nickname=?;`
+  return allServies.query(_sql, value)
+}
+
+// 查找用户
+let findUser = function(username) {
+  let _sql = `select * from users where username=?;`
+  return allServies.query(_sql, username)
+}
+
+// 用户登录
+let userLogin = function(username, password) {
+  let _sql = `select * from user where username=? and password=?;`
+  return allServies.query(_sql, [username, password])
+}
+
 module.exports = {
-  getAllUsers
+  getAllUsers,
+  insertUser,
+  findUser,
+  userLogin
 }
