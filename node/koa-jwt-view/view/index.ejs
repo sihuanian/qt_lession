@@ -1,0 +1,11 @@
+<%- include('header') %>
+<div class="container">Hello View</div>
+<p><%= userName %></p>
+<p><%= sex %></p>
+<!-- 转义输出 -->
+<% hobbies.forEach(hobby => { %>
+  <li>
+    <%= hobby %>
+  </li>
+<% }) %>
+<%- include('footer') %>
