@@ -74,4 +74,40 @@ router.post('/userRegister', async (ctx, next) => {
   })
 })
 
+// 用户登录请求
+router.post('/userLogin', async (ctx, next) => {
+  let _username = ctx.request.body.username
+  let _userpwd = ctx.request.body.userpwd
+  await userService.userLogin(_username, _userpwd)
+    .then(res => {
+      let r = ''
+      if (res.length) {
+        r = 'OK'
+        let result = {
+          id: res[0]['id'],
+          nickname: res[0]['nickname'],
+          username: res[0]['username']
+        }
+        ctx.body = {
+          code: 800000,
+          data: result,
+          mess: '登录成功'
+        }
+      } else {
+        r = 'error'
+        ctx.body = {
+          code: 800004,
+          data: r,
+          mess: '账号或密码错误'
+        }
+      }
+    })
+    .catch ((error) => {
+      ctx.body = {
+        code: 800002,
+        data: error
+      }
+    })
+})
+
 module.exports = router
