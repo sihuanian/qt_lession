@@ -23,6 +23,14 @@ export default new Router({
       meta: {
         title: '欢迎'
       }
+    },
+    {
+      path: '/StarLogin',
+      name: 'StarLogin',
+      component: _import_('Login/StarLogin'),
+      meta: {
+        title: '欢迎'
+      }
     }
   ]
 })
