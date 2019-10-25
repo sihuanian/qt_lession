@@ -31,6 +31,22 @@ export default new Router({
       meta: {
         title: '欢迎'
       }
+    },
+    {
+      path: '/StarRegister',
+      name: 'StarRegister',
+      component: _import_('Register/StarRegister'),
+      meta: {
+        title: '注册'
+      }
+    },
+    {
+      path: '/NoteClass',
+      name: 'NoteClass',
+      component: _import_('NoteClass/NoteClass'),
+      meta: {
+        title: '笔记分类'
+      }
     }
   ]
 })
