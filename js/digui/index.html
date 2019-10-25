@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>递归</title>
+</head>
+<body>
+  <script>
+    // 1. 找规律  2. 找出口  return 递归公式   找到退出条件
+   /*  function mul(n) {
+      let res = 1
+      for (let i = 1; i <= n; i++) {
+        res *= i
+      }
+      return res
+    }
+    console.log(mul(5)) */
+
+    /* function mul(n) {
+      if (n === 1 || n === 0) {
+        return 1
+      }
+      return n * mul(n - 1)
+    }
+    console.log(mul(5)) */
+
+    // 斐波那契数列
+    // n = (n - 1) + (n -2)
+    // function feibinaqi(n) {
+    //   if (n === 1 || n === 2) {
+    //     return 1
+    //   }
+    //   return feibinaqi(n - 1) + feibinaqi(n - 2)
+    // }
+    // console.log(feibinaqi(5))
+
+    function fb(n) {
+      let a =1,
+        b = 1
+      let res = null
+      if (n <= 2) {
+        return 1
+      }
+      for (let i = n; i >= 3; i--) {
+        res = a + b
+        a = b
+        b = res
+      }
+      return res
+    }
+    console.log(fb(6))
+  </script>
+</body>
+</html>
