@@ -24,7 +24,7 @@ router.post('/userRegister', async (ctx, next) => {
   let _userpwd = ctx.request.body.userpwd
   let _nickname  = ctx.request.body.nickname
   // 验证输入是否合法
-  if (!_username && !_userpwd && !_nickname) {
+  if (!_username || !_userpwd || !_nickname) {
     ctx.body = {
       code: 800001,
       mess: '用户名、密码、昵称不能为空'
@@ -57,7 +57,7 @@ router.post('/userRegister', async (ctx, next) => {
           if (res.affectedRows !== 0) {
             r = 'OK'
             ctx.body = {
-              code: 80000,
+              code: 800000,
               data: r,
               mess: '注册成功'
             }
