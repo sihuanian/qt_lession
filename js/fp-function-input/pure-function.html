@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>纯函数</title>
+</head>
+<body>
+  <script>
+    // 1. 相同的输入有相同的输出
+    // 2. 不依赖任何外部环境
+    // 3. 不会对外部造成影响
+
+    // 优点
+    // 易于测试
+    // 结果缓存
+    const add = (a, b) => a + b
+    add(1, 2)
+
+    let b = 20
+    const add1 = a => {
+      b = 30
+      return a + b
+    }
+    add1(2)
+    console.log(b)
+
+    let cache = new Map()
+    const meoryAdd = function(a, b) {
+      const key = JSON.stringify(Array.from(arguments))
+      let res = a + b
+      if (cache.has(key)) {
+        return cache.get(key)
+      }
+      cache.set(key, res)
+      return a + b
+    }
+    console.time('1')
+    console.log(meoryAdd(1, 2))
+    console.timeEnd('1')
+    console.time('2')
+    console.log(meoryAdd(1, 2))
+    console.timeEnd('2')
+
+    // 将函数转成可以缓存的函数
+    const memorize = function(fn) {
+      let cache = new Map()
+      return function(...args) {
+        let key =  JSON.stringify(args)
+        if (cache.has(key)) {
+          return cache.get(key)
+        }
+        let res = fn(...args)
+        cache.set(key, res)
+        return res
+      }
+    }
+    const madd = memorize(add)
+    console.time('3')
+    console.log(madd(1, 2))
+    console.log(madd(1, 2))
+    console.timeEnd('3')
+
+    console.time('4')
+    console.log(add(1, 2))
+    console.log(add(1, 2))
+    console.timeEnd('4')
+    // 不同的时间电脑的性能不一致
+  </script>
+</body>
+</html>
