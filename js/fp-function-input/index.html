@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>函数式编程</title>
+</head>
+<body>
+  <!-- curry柯里化 高阶函数 函数式编程是对过程抽象 面向对象编程是对数据抽象的 -->
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
+  <script>
+    var arr = [1, 2, 3]
+    // 无形参
+    console.log(arr.map(parseInt))
+    console.log(arr.map(item => parseInt(item, 10)))
+    // 某一类函数 也要固定一个参数
+    const add = (a, b, c) => a + b + c
+    // 偏函数
+    const add10 = add.bind(null, 10)
+    console.log(add10(11, 12))
+    // 柯里化 函数参数处理
+    const curryAdd = _.curry(add)
+    console.log(curryAdd(1)(2)(3))
+
+    // high order function
+    function hof(fn) {
+      // 所有的函数都有的一个过程
+      return function() {
+        
+      }
+    }
+    // 右偏
+    Function.prototype.bindRight = function(thisObj, ...args1) {
+      const fn = this
+      const length = fn.length
+      console.log('args1', args1)
+      // console.log('length', length)
+      return function(...args2) {
+        console.log('args2', args2)
+        let arsSlice = args2.slice(0, length - args1.length)
+        return fn.apply(thisObj, [...arsSlice, ...args1])
+      }
+    }
+
+    const add20 = add.bindRight(null, 10)
+    console.log(add20)
+    // console.log(add20(20, 30))
+
+    // console.log(arr.map(parseInt.bindRight(null, 10)))
+  </script>
+</body>
+</html>
