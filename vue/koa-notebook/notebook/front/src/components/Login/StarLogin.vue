@@ -14,7 +14,7 @@
       <p class="forgot-pwd">忘记密码</p>
       <div class="sign" @click="login">登录</div>
     </div>
-    <p class="register">新用户？点击这里注册</p>
+    <p class="register" @click="register">新用户？点击这里注册</p>
   </div>
 </template>
 
@@ -29,6 +29,9 @@ export default {
     }
   },
   methods: {
+    register () {
+      this.$router.push({ path: 'StarRegister' })
+    },
     login () {
       if (this.username.trim() === '' || this.password.trim() === '') {
         this.$toast('用户名或密码不能为空')
