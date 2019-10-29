@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>generator</title>
+</head>
+<body>
+  <script>
+    function* test () {
+      console.log('start')
+      let a = yield 'val'
+      console.log(a)
+      let b = yield 123
+      console.log(b)
+      console.log('end')
+    }
+    const obj = test()
+    console.log(obj.next(1)) // next传值是上一个yield返回值
+    // console.log(obj.next(2))
+    // console.log(obj.next(3))
+    // console.log(obj.next())
+/*     function autoRun(generator) {
+      let genObj = generator()
+      let g = genObj.next()
+      while (!g.done) {
+        console.log(g, '========')
+        g = genObj.next(g.value)
+      }
+    }
+    autoRun(test) */
+  </script>
+</body>
+</html>
