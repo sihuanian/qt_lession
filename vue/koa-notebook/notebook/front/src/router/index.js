@@ -47,6 +47,38 @@ export default new Router({
       meta: {
         title: '笔记分类'
       }
+    },
+    {
+      path: '/NoteList',
+      name: 'NoteList',
+      component: _import_('NoteList/NoteList'),
+      meta: {
+        title: '笔记列表'
+      }
+    },
+    {
+      path: '/NoteDetail',
+      name: 'NoteDetail',
+      component: _import_('NoteDetail/NoteDetail'),
+      meta: {
+        title: '笔记详情'
+      }
+    },
+    {
+      path: '/person',
+      name: 'Person',
+      component: _import_('Person/Person'),
+      meta: {
+        title: '个人中心'
+      }
+    },
+    {
+      path: '/publishNote',
+      name: 'PublishNote',
+      component: _import_('PublishNote/PublishNote'),
+      meta: {
+        title: '创建笔记'
+      }
     }
   ]
 })
