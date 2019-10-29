@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Promise</title>
+</head>
+<body>
+  <script>
+    // 生成一个立即resolve 的Promise
+    Promise.resolve('abc').then(res => {
+      console.log(res) 
+    })
+    // resolve中是Promise 直接返回
+    const p = Promise.resolve(fetch('./mock.json'))
+    console.log(p)
+    // 生成一个立即reject的 Promise
+    Promise.reject(new Error('error')).catch(err => {
+      console.log(err)
+    })
+  </script>
+</body>
+</html>
