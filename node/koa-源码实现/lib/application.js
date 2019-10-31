@@ -1,5 +1,6 @@
 const http = require('http')
 const EventEmitter = require('events')
+const Stream = require('stream')
 
 const context = require('./context')
 const request = require('./request')
@@ -12,6 +13,7 @@ class myKoa extends EventEmitter{
     this.context = context
     this.request = request
     this.response = response
+    this.middlewares = []
   }
 
   // 创建ctx
@@ -32,13 +34,46 @@ class myKoa extends EventEmitter{
 
   // 处理请求
   handleRequest (req, res) {
+    res.statusCode = 404 // 默认
+
     const ctx = this.createContext(req, res)
-    this.fn(ctx) // 调用用户给的回调，把ctx 还给用户使用
-    res.end(ctx.body) // ctx.body 用来输出到页面
+    let fn = this.compose(this.middlewares, ctx)
+    fn.then(() => {
+      if (typeof ctx.body === 'object') {
+        res.setHeader('Content-Type', 'application/json;charset=utf8')
+        res.end(JSON.stringify(ctx.body))
+      } else if (ctx.body instanceof Stream) {
+        ctx.body(res)
+      } else if (typeof ctx.body === 'string' || Buffer.isBuffer(ctx.body)) {
+        res.setHeader('Content-Type', 'text/html;charset=utf8')
+        res.end(ctx.body)
+      } else {
+        res.end('Not found')
+      }
+    }).catch(error => {
+      this.emit('error', error)
+      res.statusCode = 500
+      res.end('server error')
+    })
+    // this.fn(ctx) // 调用用户给的回调，把ctx 还给用户使用
+
+    // res.end(ctx.body) // ctx.body 用来输出到页面
   }
 
   use (fn) {
-    this.fn = fn
+    // this.fn = fn
+    this.middlewares.push(fn)
+  }
+
+  compose (middlewares, ctx) {
+    function dispatch(index) {
+      if (index === middlewares.length) {
+        return
+      }
+      let middleware = middlewares[index]
+      return Promise.resolve(middleware(ctx, () => dispatch(++index)))
+    }
+    return dispatch(0)
   }
 
   listen (...args) {
