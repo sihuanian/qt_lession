@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #logo {
+      width: 100px;
+      height: 50px;
+      background-color: #ff0;
+    }
+  </style>
+</head>
+<body>
+  <div id="logo"></div>
+  <script>
+    // 一个只用以对象作为键名的 map, WeakMap 上的每一个键名的引用也是弱引用
+    const myElement = document.getElementById('logo')
+    let myWeakMap = new WeakMap()
+    myWeakMap.set(myElement, {timesClicked: 0})
+    myElement.addEventListener('click', function (){
+      let logoData = myWeakMap.get(myElement)
+      logoData.timesClicked++
+      console.log(myWeakMap)
+    }, false)
+  </script>
+</body>
+</html>
