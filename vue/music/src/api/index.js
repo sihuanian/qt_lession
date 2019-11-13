@@ -29,7 +29,7 @@ export function fetchGet (url, param) {
     }, err => {
       reject(err)
     })
-    .catch(() => {
+    .catch((error) => {
       reject(error)
     })
   })
