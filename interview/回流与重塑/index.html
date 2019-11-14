@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .active {
+      border-left: 1px;
+      border-right: 1px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- <div style="width: 50%;">
+    <div style="width: 50%;">hello world</div>
+  </div> -->
+  <div id="test">test</div>
+  <script>
+    const el = document.getElementById('test')
+    // el.style.padding = '5px'
+    // el.styel.borderLeft = '1px'
+    // el.styel.borderRight = '1px'
+    // 最小化回流与重绘
+    // el.style.cssText += 'border-left: 1px; border-right: 1px; padding: 5px;'
+    el.className += 'active'
+    
+  </script>
+</body>
+</html>
+
+<!-- 回流： 因为元素的尺寸，布局，隐藏等改变而需要重新对其进行构建的操作（重构页面） -->
