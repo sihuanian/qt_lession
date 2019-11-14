@@ -44,6 +44,7 @@ var foo = function () {
 //   }
 // }
 
+// 惰性函数就是解决每次都要进行判断的这个问题，解决原理很简单，重写函数
 function addEvent(type, el, fn) {
   if (window.addEventListener) {
     addEvent = function (type, el, fn) {
