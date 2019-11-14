@@ -4,3 +4,14 @@
 函数式编程提倡 ***过程抽象***
 
 > yarn eject
+
+```json
+"plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ]
+```
