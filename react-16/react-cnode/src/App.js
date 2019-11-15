@@ -33,7 +33,8 @@ class App extends Component {
               <Route path="/" exact>
                 <Home />
               </Route>
-              <Route path="/topic">
+              {/* 接收参数 */}
+              <Route path="/topic/:id">
                 <Topic />
               </Route>
             </Content>

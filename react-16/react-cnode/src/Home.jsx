@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from './axios.js'
 import { Pagination,Spin } from 'antd'
+import { Link } from 'react-router-dom'
 const perSize = 40
 const tabMap = {
   'all': '全部',
@@ -20,13 +21,18 @@ class Home extends Component {
   onChange = (page) => {
     this.setState({
       current: page
+    }, () => {
+      this.handleRequestList()
     })
   }
   handleChangeTab = (key) => (e) => {
+    // setState是异步的,第二个参数是执行成功的的回调
+    // react setState借鉴了事务的思想
     this.setState({
       tab: key
+    }, () => {
+      this.handleRequestList()
     })
-    this.handleRequestList()
   }
   handleRequestList = () => {
     this.setState({
@@ -64,11 +70,13 @@ class Home extends Component {
           {
             list.data && list.data.map((dis, index) => {
               return (
-                <li key={`dis${index}`}>
-                  <img src={dis.author.avatar_url} alt=""/>
-                  <span>{dis.author.loginname}</span>
-                  <h2>{dis.title}</h2>
-                </li>
+                <Link to={`/topic/${dis.id}`} key={index}>
+                  <li className="li" key={`dis${index}`}>
+                    <img src={dis.author.avatar_url} alt=""/>
+                    <span>{dis.author.loginname}</span>
+                    <h2>{dis.title}</h2>
+                  </li>
+                </Link>
               )
             })
           }
