@@ -1,8 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
 import immutable from 'immutable'
-// const { List } = require('immutable')
+import Header from './Header'
+import Main from './Main'
+import Footer from './Footer'
+import ColorRedWrapper from './RedColor'
 
 // 可变
 let a = [0, 1, 2]
@@ -24,25 +26,34 @@ let obj1 = {
   b: 2
 }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = { 
+    store: imObj
+  }
+
+  handleSet = () => {
+    let store = this.state.store.setIn(['d', 'e'], this.state.store.getIn(['d', 'e'])+1)
+    this.setState({
+      store
+    })
+  }
+
+  render() {
+    const { store } = this.state
+    return (
+      <div>
+        <ColorRedWrapper>
+          <p>123</p>
+          <div>456</div>
+        </ColorRedWrapper>
+        <button onClick={this.handleSet}>set</button>
+        {/* get 获取一个属性 */}
+        <Header value={store.get('a')} />
+        <Main value={store.get('b')} />
+        <Footer value={store.get('d')} />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
