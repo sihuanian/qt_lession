@@ -18,10 +18,11 @@ width: 625px;
 `
 // 标签模板 styled.div 是一个方法
 export const TopicWrapper = styled.div`
-  overflow: 'hidden';
-  padding: '20px 0 10px 0';
-  margin-left: '-18px';
-  border-bottom: '1px solid #dcdcdc';
+  overflow: hidden;
+  padding: 20px 0 10px 0;
+  margin-left: -18px;
+	border-bottom: 1px solid #dcdcdc;
+	height: 55px;
   color: ${props => props.color}; // 接收组件的传参
 `
 

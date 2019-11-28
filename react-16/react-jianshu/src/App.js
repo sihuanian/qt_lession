@@ -6,6 +6,8 @@ import './App.css'
 import BaseComponent from './lib/BaseComponent'
 import store from './store/index'
 import Home from './pages/home/index'
+import Header from './common/header/index'
+import './statics/iconfont/iconfont'
 
 class App extends BaseComponent {
   state = {  }
@@ -15,7 +17,7 @@ class App extends BaseComponent {
         {/* BrowserRouter保存了全局的路由信息 */}
         <BrowserRouter>
           <div>
-            header
+            <Header />
             <Route exact path='/' component={Home}></Route>
           </div>
         </BrowserRouter>

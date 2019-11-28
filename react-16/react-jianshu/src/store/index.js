@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux-immutable'
-import { createStore, applyMiddleware,compose } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import homeReducer from '../pages/home/store/reducer'
+import headerReducer from '../common/header/store/reducer.js'
 
 // immutable化的reducer
 const reducer = combineReducers({
-  home: homeReducer
+  home: homeReducer,
+  header: headerReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

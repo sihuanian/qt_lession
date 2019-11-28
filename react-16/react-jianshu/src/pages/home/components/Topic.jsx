@@ -9,7 +9,7 @@ class Topic extends Component {
   render() {
     const { list } = this.props
     return (
-      <TopicWrapper color="red">
+      <TopicWrapper>
         {
           list.map((item, i) => {
             return (
