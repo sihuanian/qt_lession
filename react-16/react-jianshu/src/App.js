@@ -8,6 +8,14 @@ import store from './store/index'
 import Home from './pages/home/index'
 import Header from './common/header/index'
 import './statics/iconfont/iconfont'
+import PrivateRoute from './lib/PrivateRoute.jsx'
+import Login from './pages/login/index'
+
+function Write() {
+  return (
+    <div>写文章页面</div>
+  )
+}
 
 class App extends BaseComponent {
   state = {  }
@@ -19,6 +27,11 @@ class App extends BaseComponent {
           <div>
             <Header />
             <Route exact path='/' component={Home}></Route>
+            {/* <PrivateRoute path="/write" Com={Write} /> */}
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/write">
+              <Write />
+            </PrivateRoute>
           </div>
         </BrowserRouter>
       </Provider>

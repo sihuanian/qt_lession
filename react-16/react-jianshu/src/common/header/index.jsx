@@ -27,7 +27,11 @@ class index extends Component {
               in={focus}
               classNames="slide"
             >
-              <NavSearch onFocus={() => this.props.handleFocus()}/>
+							<NavSearch
+							  onFocus={() => this.props.handleFocus(true)}
+							  onBlur={() => {
+								this.props.handleFocus(false)
+							}}/>
             </CSSTransition>
           </SearchWrapper>
 				</Nav>
@@ -39,6 +43,7 @@ class index extends Component {
 						</Button>
 					</Link>
 					<Button className='reg'>注册</Button>
+					<Link to="login">登录</Link>
 				</Addition>
 			</HeaderWrapper>
 		)
@@ -53,8 +58,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleFocus () {
-      dispatch(actionCreators.searchFocus())
+    handleFocus (focus) {
+      dispatch(actionCreators.searchFocus(focus))
     }
   }
 }

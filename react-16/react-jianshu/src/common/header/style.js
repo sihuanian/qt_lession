@@ -151,6 +151,12 @@ export const Addition = styled.div`
 	right: 0;
 	top: 0;
 	height: 56px;
+	& a {
+		line-height: 56px;
+		text-decoration: none;
+		margin-right: 21px;
+		color: #969696;
+	}
 `;
 
 export const Button = styled.div`
