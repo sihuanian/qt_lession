@@ -1,6 +1,6 @@
 import React from 'react'
 // router 1. hash 2. history  BrowserRouter history实现路由
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import './App.css'
 import BaseComponent from './lib/BaseComponent'
