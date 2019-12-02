@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  let obj = {
+    key: 123,
+    // 定义属性
+    get kk() {
+      console.log('get kk')
+      return obj['kk']
+    },
+    set kk(val) {
+      console.log('change kk')
+      this._kk = val
+    }
+  }
+  console.log(obj.k)
+  obj.kk = '456'
+  obj.ccc = 123
+  </script>
+</body>
+</html>
