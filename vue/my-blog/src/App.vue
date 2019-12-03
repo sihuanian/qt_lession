@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <Nav />
+    <Nav v-if="isShowNav" />
     <router-view/>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Watch } from 'vue-property-decorator';
 import Nav from '@/components/nav.vue';
 // import Component from 'vue-class-component';
 
@@ -16,8 +16,26 @@ import Nav from '@/components/nav.vue';
   },
 })
 
-export default class App extends Vue {
+interface Route {
+  path: string;
+}
 
+export default class App extends Vue {
+  private isShowNav: boolean = false;
+
+  beforeRouteUpdate(to: Route, from: Route, next: any) {
+    console.log(to.path);
+    if (to.path === '/') {
+      this.isShowNav = false
+    } else {
+      this.isShowNav = true
+    }
+  }
+
+  // @Watch('$route')
+  // routeChange(val, oldVal) {
+
+  // }
 }
 </script>
 
