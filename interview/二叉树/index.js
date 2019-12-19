@@ -50,7 +50,7 @@ var nextOrder = function (node) {
     console.log(node.value)
   }
 }
-// nextOrder(tree)
+nextOrder(tree)
 
 // 深度优先非递归
 var preOrderUnrecur = function (node) {
@@ -62,19 +62,19 @@ var preOrderUnrecur = function (node) {
   while (stack.length !== 0) {
     node = stack.pop()
     console.log(node.value)
-    if (node.left) {
-      stack.push(node.left)
-    }
     if (node.right) {
       stack.push(node.right)
+    }
+    if (node.left) {
+      stack.push(node.left)
     }
   }
 }
 
-preOrderUnrecur(tree)
+// preOrderUnrecur(tree)
 console.log('============')
 
-// 广度优先非递归方法
+// 广度优先非递归方法(逐层遍历)
 function BreadthFirstUnrecur (biTree) {
   let queue = []
   queue.push(biTree)
@@ -90,4 +90,4 @@ function BreadthFirstUnrecur (biTree) {
   }
 }
 
-BreadthFirstUnrecur(tree)
+// BreadthFirstUnrecur(tree)
