@@ -52,3 +52,7 @@ server: /build/bundle.js // node localhost:3000
 
 public: /public/index.js
 //作为node 服务器返回的html 需要加载的资源
+
+## store
+生成带有数据的 html
+目的： 首页数据都由服务器渲染
