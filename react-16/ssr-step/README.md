@@ -10,6 +10,7 @@ SSR
 1. <div id="app">内容</div>
 2. js addEvent
 
+// 页面性能指标
 DCL: DOMComtentLoaded dom 解析完成时
 L: load 这个页面所有资源加载完成
 FP: first-paint 有像素落点的时候

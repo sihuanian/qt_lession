@@ -10,10 +10,10 @@ import { getServerStore } from '../store/index'
 // BrowserRouter h5 history api
 // 内存 router ['/', '/a', '/a/c']
 
-export default (req) => {
+export default (req, store) => {
   // jsx
   const App = (
-    <Provider store={getServerStore()}>
+    <Provider store={store}>
       <StaticRouter location={req.path}>
       <div>{ renderRoutes(routes) }</div>
       </StaticRouter>
@@ -30,6 +30,9 @@ export default (req) => {
 </head>
 <body>
   <div id="app">${renderToString(App)}</div>
+  <script>window.__context__ = {
+    state: ${JSON.stringify(store.getState())}
+  }</script>
   <script src="/index.js"></script>
 </body>
 </html>

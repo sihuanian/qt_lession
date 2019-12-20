@@ -11,7 +11,8 @@ export default [
       {
         path: '/',
         component: Home,
-        exact: true
+        exact: true,
+        loadData:Home.loadData
       },
       {
         path: '/login',
