@@ -56,3 +56,7 @@ models： 模型文件
 
 ## 导入种子文件到数据库中
 > .\node_modules\.bin\sequelize db:seed:all
+> .\node_modules\.bin\sequelize db:seed:undo:all(删除所有导入的数据)
+
+## 开始项目开发
+- tsc --init
