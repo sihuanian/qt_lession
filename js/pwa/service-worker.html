@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>service-worker</title>
+</head>
+<body>
+  <div id="app"></div>
+  <img src="./service-worker.png" alt="">
+  <script src="./bundle.js"></script>
+  <script>
+    // https localhost 环境下才能安装成功
+    navigator && navigator.serviceWorker && navigator.serviceWorker.register('./sw.js')
+      .then(res => {
+        console.log('注册成功')
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  </script>
+</body>
+</html>
