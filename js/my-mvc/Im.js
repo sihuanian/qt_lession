@@ -1,10 +1,13 @@
 const Koa = require('koa')
-const { initRouter } = require('./Im-loader')
+const { initRouter, initController, initServices, loadConfig } = require('./Im-loader')
 
 module.exports = class IM {
   constructor(conf) {
     this.$app = new Koa(conf)
-    this.$router = initRouter()
+    loadConfig(this) // 加载配置项
+    this.$service = initServices()
+    this.$ctrl = initController()
+    this.$router = initRouter(this)
     this.$app.use(this.$router.routes())
   }
   start(port) {
