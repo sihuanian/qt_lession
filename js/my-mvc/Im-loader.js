@@ -12,7 +12,7 @@ function load(dir, cb) {
   files.forEach(fileName => {
     // 去掉扩展名
     fileName = fileName.replace('.js', '')
-    const file = require(url + '/' + fileName)
+    const file = require(url + '/' + fileName) // 导出的大对象
     cb(fileName, file)
   })
 }
@@ -21,10 +21,11 @@ function load(dir, cb) {
 
 
 // 加载路由
-function initRouter() {
+function initRouter(app) {
   const router = new Router()  
   load('routes', (fileName, routes) => {
     const prefix = fileName === 'index' ? '' : `/${fileName}`
+    routes = typeof routes === 'function' ? routes(app) : routes
     // console.log('prefix', prefix)
     // console.log('routes', routes)
     Object.keys(routes).forEach(key => {
@@ -32,7 +33,11 @@ function initRouter() {
       // console.log(`正在映射地址： ${method.toUpperCase()} ${prefix}${path}`)
       // 注册路由
       // app.get('/', async ctx => {})
-      router[method](prefix + path, routes[key])
+      // router[method](prefix + path, routes[key])
+      router[method](prefix + path, async ctx => {
+        app.ctx = ctx
+        await routes[key](app)
+      })
     })
   })
   // console.log(Object.getOwnPropertyNames(router))
@@ -41,6 +46,46 @@ function initRouter() {
 
 // initRouter()
 
+// 初始化控制层
+function initController() {
+  const controllers = {}
+  // 读取控制器目录
+  load('controller', (filename, controller) => {
+    // console.log(filename)
+    // 添加路由
+    controllers[filename] = controller
+  })
+  return controllers
+}
+// initController()
+
+function initServices() {
+  const services = {}
+  // 读取控制器目录
+  load('service', (filename, service) => {
+    // 添加路由
+    services[filename] = service
+  })
+  // console.log(Servicess)
+  return services
+}
+
+const Sequelize = require('sequelize')
+function loadConfig(app) {
+  load('config', (filename, conf) => {
+    conf.db && (app.$db = new Sequelize(conf.db)) // 初始化db
+    // 加载模型
+    app.$model = {}
+    load('model', (filename, { schema, options }) => {
+      app.$model[filename] = app.$db.define(filename, schema, options) // 将sequelize 一个个模型全部加载
+    })
+    app.$db.sync() // 模块同步
+  })
+}
+
 module.exports = {
-  initRouter
+  initRouter,
+  initController,
+  initServices,
+  loadConfig
 }
