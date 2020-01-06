@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <p>合法页面的操作</p>
+    <button>转账</button>
+    <a href="http://localhost:8080/count">查看余额</a>
+    <p>hack 操作</p>
+  </div>
+  <script>
+    // session 表
+    // [ { session_id: 1, uid: 100, login: true }]
+    document.cookie = 'login=true;samesite=strict'
+    // Strict最为严格，完全禁止第三方 Cookie，跨站点时，任何情况下都不会发送 Cookie。换言之，只有当前网页的 URL 与请求目标一致，才会带上 Cookie。
+    // document.cookie = 'session_id=1'
+  </script>
+</body>
+</html>
