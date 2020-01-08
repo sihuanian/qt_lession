@@ -1,5 +1,6 @@
 // curry 函数, 返回新函数, 逐渐的消化，
 function curry(fn, len = fn.length) {
+  console.log(this)
   return _curry.call(this, fn, len)
 }
 
